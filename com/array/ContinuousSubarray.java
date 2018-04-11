@@ -2,7 +2,7 @@
 /**
 *
 * find continuous sub array 
-whose sum is equal to a given number
+*whose sum is equal to a given number
 * Input Array : [42, 15, 12, 8, 6, 32]
 * Input Number : 26
 * Continuous Sub Array : 12 8 6
