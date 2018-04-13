@@ -4,7 +4,7 @@ import java.util.Iterator;
 /**
 * no dup no order
 */
-class HashSetEmp{
+public class HashSetEmp{
 		static void hashSetEmp(){
 			HashSet<Employee> set = new HashSet<>();
 			set.add(new Employee("Jane", 11000));
