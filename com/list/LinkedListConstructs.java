@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 class LinkedListConstructs{
 
-	static LinkedList<String> linkedListConstructs(LinkedList<String> list){
+	static LinkedList<String> linkedListConstructs(){
+		LinkedList<String> list = new LinkedList<>();
 		String s = "one";
 		//add to the end 
 		list.add("one");
@@ -19,11 +20,11 @@ class LinkedListConstructs{
 		if(list.contains(s)){
 			System.out.println(list.indexOf(s));
 		}
-		Iterator<String> it = list.descendingIterator();
+		Iterator<String> it = list.listIterator();
 		while(it.hasNext()){
 			System.out.print(it.next()+" ");
 		}
-		System.out.println("The size of the list: "+list.size());
+		System.out.println("\n The size of the list: "+list.size());
 		
 		return list;
 	
@@ -42,10 +43,10 @@ class LinkedListConstructs{
 
 	}
 	static void linkedListQueue(LinkedList<String> list){
-		//add at the tail
+		//add at the head
 		list.offerFirst("zeroOffer");
 		list.addFirst("zeroAdd");
-		
+		//add ar the tail
 		list.offerLast("10Offer");
 		list.addLast("20Add");
 		list.offerLast("10Offer");
@@ -89,12 +90,19 @@ class LinkedListConstructs{
 	}
 
 	public static void main(String[] args){
-		LinkedList<String> list = new LinkedList<>();
-		LinkedList<String> listInit = linkedListConstructs(list);
-		System.out.println("=================");
-		//linkedListMerge(listInit);
+		
+		LinkedList<String> listInit = linkedListConstructs();
+		
+
+		System.out.println("===============");
+
+		linkedListMerge(listInit);
+		System.out.println("===============");
+
 		linkedListQueue(listInit);
-		//linkedListStack(listInit);
+
+		System.out.println("===============");
+		linkedListStack(listInit);
 
 	}
 }
