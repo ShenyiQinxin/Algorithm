@@ -5,10 +5,13 @@ import java.util.Arrays;
 class ArrayToList{
 	
 	static void arrayToList(String[] arr){
+		//
 		List<String> list = Arrays.asList(arr);
 		System.out.println(list);
+		//
 		ArrayList<String> alist = new ArrayList<>(list);
 		System.out.println(alist);
+		//
 		String[] array = new String[alist.size()];
 		alist.toArray(array);
 		for(String s: array){

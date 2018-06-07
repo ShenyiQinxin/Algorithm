@@ -11,7 +11,8 @@ class IntersectionArrays{
 	
 	static void intersectionArrays(String[] a1, String[] a2){
 		//no dup, not sorted
-		HashSet<String> set = new HashSet<>();
+		//HashSet<String> set = new HashSet<>();
+		HashSet<String> set = new HashSet<String>();
 		for(int i=0; i<a1.length; i++){
 			for(int j=0; j<a2.length; j++){
 				if(a1[i].equals(a2[j])){
@@ -38,6 +39,6 @@ class IntersectionArrays{
 		String[] a1 = {"ONE", "TWO", "THREE", "FOUR", "FIVE", "FOUR"};
 		String[] a2 = {"THREE", "FOUR", "FIVE", "SIX", "SEVEN", "FOUR"};
 		intersectionArrays(a1, a2);
-		intersectionHashSet(a1,a2);
+		//intersectionHashSet(a1,a2);
 	}
 }
