@@ -29,9 +29,8 @@ public BracesValidator{
 					}
 				}
 			}
-		}
+		}//end for
 		return openerStack.empty();
-	}
-	//end method
+	}//end method
 	
 }

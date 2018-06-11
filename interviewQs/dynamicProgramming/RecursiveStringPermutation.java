@@ -1,5 +1,6 @@
 
-
+//If we're making all permutations for "cat," 
+//we take all permutations for "ca" and then put "t" in each possible position in each of those permutations.
 public RecursiveStringPermutation{
 	
 	
@@ -8,8 +9,9 @@ public RecursiveStringPermutation{
 		if(inputString.length() <=1){
 			return new HashSet<>(Collections.singletonList(inputString));
 		}
-		
+		//ca 
 		String allCharsExceptLast = inputString.subString(0, inputString.length()-1);
+		//t
 		char lastChar = inputString.charAt(inputString.length()-1);
 		
 		//recursive call
@@ -17,13 +19,13 @@ public RecursiveStringPermutation{
 		
 		Set<String> permutations = new HashSet<>();
 		for(String eachPermutationExceptLast :permutationsOfAllCharsExceptLast){
+			//"ca"
 			for(int i=0; i<=allCharsExceptLast.length(); i++){
 				
 				//put the last char in all possible positions for relative eachPermutationExceptLast
-				
 				String permutation = eachPermutationExceptLast.substring(0, i)
 					+lastChar+eachPermutationExceptLast.substring(i);
-				permutations.add(i);
+				permutations.add(permutation);
 			}
 		}
 		//return the set of permutations 

@@ -1,5 +1,12 @@
 
+/*
+given a sentence like the one above, along with the position of an opening parenthesis, 
+finds the corresponding closing parenthesis.
 
+"Sometimes (when I nest them (my parentheticals) too much (like this (and this))) they get confusing."
+if the example string above is input with the number 10 (position of the first parenthesis), 
+the output should be 79 (position of the last parenthesis).
+*/
 public ParentheticalsMatching{
 	public static int getClosingParen(String sentence, int openingParenIndex){
 		int openNestedParens = 0;

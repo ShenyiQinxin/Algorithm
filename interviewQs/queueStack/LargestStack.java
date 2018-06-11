@@ -10,13 +10,14 @@ public class MaxStack{
 	public void push(int item){
 		//all items go into stack
 		stack.push(item);
-		//larger item go into maxesStack
+		//the larger item goes into maxesStack
 		if(maxesStack.empty() || item >= maxesStack.peek()){
 			maxesStack.push(item);
 		}
 	}
 	
 	public int pop(){
+		//both stacks pop an item
 		int item = stack.pop();
 		//if the item is the max item which is stored in maxesStack, pop it out
 		if(item == maxesStack.peek()){

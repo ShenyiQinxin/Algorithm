@@ -1,5 +1,18 @@
 import static java.lang.Math.max;
 
+//weighs 7 kilograms and has a value of 160 shillings
+//new CakeType(7, 160);
+class CakeType {
+
+    int weight;
+    int value;
+
+    public CakeType(int weight, int value) {
+        this.weight = weight;
+        this.value  = value;
+    }
+}
+
 public CakeThief{
 	public static long maxDuffelBagValue(CakeType[] cakeTypes, int weightCapacity){
 		//array of possible maximum values at every capacity (0 - weightCapacity)

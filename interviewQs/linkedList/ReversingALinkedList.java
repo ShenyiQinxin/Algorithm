@@ -1,4 +1,12 @@
+public class LinkedListNode {
 
+    public int value;
+    public LinkedListNode next;
+
+    public LinkedListNode(int value) {
+        this.value = value;
+    }
+}
 
 public ReversingALinkedList{
 	public static LinkedListNode reverse(LinkedListNode headOfList){
@@ -9,6 +17,7 @@ public ReversingALinkedList{
 		while(currentNode != null){
 			//copy the pointer currentNode.next to nextNode
 			nextNode = currentNode.next;
+			//<-- <-- <--
 			//save previousNode in currentNode.next
 			currentNode.next = previousNode;
 			//save currentNode in previousNode

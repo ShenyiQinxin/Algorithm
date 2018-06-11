@@ -1,7 +1,13 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Stack;
+/**
+A tree is "superbalanced" 
+if the difference between the depths of any two leaf nodes is no greater than one.
 
+1. There are more than 2 different leaf depths
+2. There are exactly 2 leaf depths and they are more than 1 apart.
+*/
 public class BinaryTreeNode {
 
     public int value;
