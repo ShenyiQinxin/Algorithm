@@ -1,5 +1,15 @@
 
 //reverse words in a char array (a string)
+/**
+char[] message = { 'c', 'a', 'k', 'e', ' ',
+                   'p', 'o', 'u', 'n', 'd', ' ',
+                   's', 't', 'e', 'a', 'l' };
+
+reverseWords(message);
+
+System.out.println(message);
+// prints: "steal pound cake"
+*/
 public ReverseWords{
 	
 	public static void reverseWords(char[] message){

@@ -1,5 +1,7 @@
-
-
+//  [ "k","v","a","b","c","d","e","g","i" ]
+//  guess "c"
+//when floorIndex +1 == ceilingIndex
+//  [ "k","a","b","c","d","e","g","i" ]
 public FindRotatingPoint{
 	
 	public static int findRotationPoint(String[] words){
@@ -13,6 +15,7 @@ public FindRotatingPoint{
 				//go right
 				floorIndex = guessIndex;
 			} else {
+				//guess point lesser than the first word, go left and guess
 				ceilingIndex = guessIndex;
 			}
 			//floor and ceiling are converged

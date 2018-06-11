@@ -13,14 +13,15 @@ public InplaceShuffle{
 		if(theArray.length <=1){
 			return;
 		}
-		for(int indexWeAreChoosingFor = 0;
-		indexWeAreChoosingFor<theArray.length-1; indexWeAreChoosingFor++){
-			int randomChoiceIndex = getRandom(indexWeAreChoosingFor, theArray.length-1);
-			//if randomChoice is not the currrent item, swap them
-			if(randomChoiceIndex != indexWeAreChoosingFor){
-				int valueAtIndexWeChoosingFor = theArray[indexWeAreChoosingFor];
-				theArray[indexWeAreChoosingFor] = theArray[randomChoiceIndex];
-				theArray[randomChoiceIndex] = valueAtIndexWeChoosingFor;
+		for(int i = 0;
+		i<theArray.length-1; i++){
+			//get a random number after index i
+			int randomChoiceIndex = getRandom(i, theArray.length-1);
+			//if randomChoice is not the item at i, swap them
+			if(randomChoiceIndex != i){
+				int value = theArray[i];
+				theArray[i] = theArray[randomChoiceIndex];
+				theArray[randomChoiceIndex] = value;
 			}
 		}
 	}//end method

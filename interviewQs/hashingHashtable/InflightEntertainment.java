@@ -1,6 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
+//choosing two movies whose total runtimes will equal the exact flight length
 public InflightEntertainment{
 	
 	public static boolean canTwoMoviesFillFlight(int[] movieLengths, int flightLength){

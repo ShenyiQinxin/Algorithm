@@ -1,5 +1,7 @@
 import static java.util.Math.max;
+//  int[] stockPrices = new int[] {10, 7, 5, 8, 11, 9};
 
+getMaxProfit(stockPrices);
 public AppleStocks{
 	public static int getMaxProfit(int[] stockPrices){
 		if(stockPrices.length<2){

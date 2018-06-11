@@ -1,6 +1,6 @@
 
 public ReverseStringInPlace{
-	
+	//use a mutable type like an array instead of an immutable string
 	public static void reverse(char[] arrayOfChars){
 		int leftIndex = 0;
 		int rightIndex = arrayOfChars.length-1;

@@ -1,6 +1,11 @@
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+"civic" should return true
+"ivicc" should return true
+"civil" should return false
+"livci" should return false
+*/
 public PermutationPalindrome{
 	//check that each character appears an even number of times, allowing for only one character to appear an odd number of times (a middle character)
 	public static boolean hasPalindromePermutation(String theString){

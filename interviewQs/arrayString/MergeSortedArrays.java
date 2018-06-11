@@ -1,5 +1,13 @@
 
-//merge 2 sorted arrays, myArray n alicesArray
+//merge 2 sorted arrays, myArray & alicesArray
+/**
+*  int[] myArray = new int[]{3, 4, 6, 10, 11, 15};
+*  int[] alicesArray = new int[]{1, 5, 8, 12, 14, 19};
+
+*  System.out.println(Arrays.toString(mergeArrays(myArray, alicesArray)));
+// prints [1, 3, 4, 5, 6, 8, 10, 11, 12, 14, 15, 19]
+*
+*/
 public MergeSortedArrays{
 	
 	public static int[] mergeArrays(int[] myArray, int[] alicesArray){
@@ -17,8 +25,8 @@ public MergeSortedArrays{
 			//the current item in myArray is smaller than alicesArray
 			if(!isMyArrayExhausted && 
 				(isAlicesArraysExhausted || 
-					(myArray[currentIndexMine] < alicesArray[currentIndexAlices])
-			    )){
+					(myArray[currentIndexMine] < alicesArray[currentIndexAlices]))
+			  ){
 					//add the item in myArray to mergedArray
 					mergedArray[currentIndexMerged] = myArray[currentIndexMine];
 					currentIndexMine++;
@@ -28,7 +36,7 @@ public MergeSortedArrays{
 				currentIndexAlices++;
 			}
 			currentIndexMerged++;
-		}
+		}//end while 
 		return mergedArray;
 	}
 	//end method

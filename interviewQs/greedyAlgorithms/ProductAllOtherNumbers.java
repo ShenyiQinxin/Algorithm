@@ -8,7 +8,7 @@ public ProductAllOtherNumbers{
 		}
 		//an array of products for the indexes
 		int[] productOfAllIntsExceptAtIndex = new int[intArray.length];
-		
+		//productSoFar is used to save the product
 		int productSoFar = 1;
 		//product of integers before each index
 		for(int i=0; i<intArray.length; i++){
@@ -19,7 +19,7 @@ public ProductAllOtherNumbers{
 		productSoFar = 1;
 		//product of all the integers after each index
 		for(int i= intArray.length - 1; i>=0; i--){
-			//multiply the product before the index
+			//multiply the product after the index
 			productsOfAllIntsExceptAtIndex[i] *= productSoFar;
 			productSoFar *= intArray[i];
 		}
