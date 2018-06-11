@@ -33,3 +33,15 @@ public TopScores{
 		
 	}//end method
 }
+
+/*
+		for(int score = highestPossibleScore; score>=0; score--){
+			
+			int count = scoreCounts[score];
+			
+			for(int occurrence:count){
+				sortedScores[currentSortedIndex] = score;
+				currentSortedIndex++;
+			}
+		}
+*/

@@ -13,8 +13,7 @@ public InplaceShuffle{
 		if(theArray.length <=1){
 			return;
 		}
-		for(int i = 0;
-		i<theArray.length-1; i++){
+		for(int i = 0; i<theArray.length-1; i++){
 			//get a random number after index i
 			int randomChoiceIndex = getRandom(i, theArray.length-1);
 			//if randomChoice is not the item at i, swap them

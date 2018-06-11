@@ -47,3 +47,26 @@ static class InfinityException extends RuntimeException {
         super("Max value is infinity!");
     }
 }
+
+/*
+
+		for(int currentCapacity =0; currentCapacity <= weightCapacity; currentCapacity++){
+			long currentMaxValue = 0;
+			
+			for(CakeType cakeType: cakeTypes){
+				if(cakeType.weight ==0 && cakeType.value != 0){
+					throw new InfinityException();
+				}
+				//when it is possible to add a cake in
+				if(cakeType.weight <= currentCapacity){
+					long maxValueUsingCake = cakeType.value + 
+						maxValuesAtCapacities[currentCapacity-cakeType.weight];
+					//compare the values before and after adding a cake value 
+					currentMaxValue = max(maxValueUsingCake, currentMaxValue);
+				}
+			}
+			//maxValuesAtCapacities is updated with currentMaxValue
+			maxValuesAtCapacities[currentCapacity] = currentMaxValue;
+		}
+
+*/

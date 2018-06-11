@@ -17,15 +17,17 @@ public NthFibonacci{
 		} else if(n==0 || n==1){
 			return n;
 		}
+		
 		int prevPrev = 0;
-		int prev = 0;
+		int prev = 1;
 		int current = 0;
 		for(int i=1; i<n; i++){
-			current = prev + prevPrev;
-			prevPrev = prev;
-			prev = current;
+			current = prev + prevPrev; //1
+			prevPrev = prev; // 1
+			prev = current; //1
 		}
 		return current;
+		
 	}//end method
 	
     public static int fibRecursive(int n) {
@@ -35,3 +37,7 @@ public NthFibonacci{
       return fibRecursive(n - 1) + fibRecursive(n - 2);
   }
 }
+
+/*
+
+*/

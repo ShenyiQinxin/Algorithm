@@ -55,4 +55,10 @@ public KthToLastNode{
 	}//end method
 }
 
-
+/*
+		
+		currentNode = head;
+		for(int i=0; i<listLength-k; i++){
+			currentNode = currentNode.next;
+		}
+*/

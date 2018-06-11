@@ -1,5 +1,5 @@
 /*
-Because the array is sorted, we can use binary search 
+Because the array is sorted, we can use *Binary Search *
 to find the item in O(lgn) time and O(1) additional space.
 */
 

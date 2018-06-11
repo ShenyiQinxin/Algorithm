@@ -10,7 +10,8 @@ public ProductAllOtherNumbers{
 		int[] productOfAllIntsExceptAtIndex = new int[intArray.length];
 		//productSoFar is used to save the product
 		int productSoFar = 1;
-		//product of integers before each index
+		//productsOfAllIntsExceptAtIndex[i] is stored in index i
+		// productSoFar deliver the value for the next index
 		for(int i=0; i<intArray.length; i++){
 			productsOfAllIntsExceptAtIndex[i] = productSoFar;
 			productSoFar *= intArray[i];
@@ -26,3 +27,17 @@ public ProductAllOtherNumbers{
 		return productsOfAllIntsExceptAtIndex;
 	}//end method
 }
+
+/*
+productSoFar = 1;
+		for(int i=0; i<intArray.length; i++){
+			productsOfAllIntsExceptAtIndex[i] = productSoFar;
+			productSoFar *= intArray[i];
+		}
+productSoFar = 1;
+		for(int i= intArray.length - 1; i>=0; i--){
+			productsOfAllIntsExceptAtIndex[i] *= productSoFar;
+			productSoFar *= intArray[i];
+		}
+
+*/

@@ -33,3 +33,15 @@ public RecursiveStringPermutation{
 		
 	}//end method
 }
+
+/*
+		for(String e :permutationsOfAllCharsExceptLast){
+			
+			for(int i=0; i<=inputString.length()-1; i++){
+				
+				String permutation = e.substring(0, i) + lastChar + e.substring(i);
+				permutations.add(permutation);
+
+			}
+		}
+*/

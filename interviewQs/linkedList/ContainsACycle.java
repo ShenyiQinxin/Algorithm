@@ -23,3 +23,14 @@ public ContainsACycle{
 		return false;
 	}//end method
 }
+
+/*
+		while(fastRunner != null && fastRunner.next != null){
+			slowRunner = slowRunner.next;
+			fastRunner = fastRunner.next.next;
+			
+			if(fastRunner == slowRunner){
+				return true;
+			}
+		}
+*/

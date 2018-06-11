@@ -41,7 +41,7 @@ public MergeMeetingTimes{
 	public static List<Meeting> mergeRanges(List<Meeting> meetings){
 		//make a copy for sortedMeetins
 		List<Meeting> sortedMeetings = new ArrayList<>();
-		for(Meeting meeting: meetins){
+		for(Meeting meeting: meetings){
 			Meeting meetingCopy = new Meeting(meeting.getStartTime(), meeting.getEndTime());
 			//the sortedMeetings are not sorted yet
 			sortedMeetings.add(meetingCopy);
@@ -74,3 +74,18 @@ public MergeMeetingTimes{
 	}
 	
 }
+
+/*
+		for(Meeting currentMeeting: sortedMeetings){
+			Meeting lastMergedMeeting = mergedMeetings.get(mergedMeetings.size()-1);
+		
+			if(lastMergedMeeting.getEndTime() >= currentMeeting.getStartTime()){
+				
+				lastMergedMeeting.setEndTime( max(lastMergedMeeting.getEndTime(), 
+					currentMeeting.getEndTime()) );
+			} else {
+
+				mergedMeetings.add(currentMeeting);
+			}
+		}
+*/

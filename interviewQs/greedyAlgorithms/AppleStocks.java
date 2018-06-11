@@ -20,3 +20,4 @@ public AppleStocks{
 		return maxProfit;
 	}//end method
 }
+

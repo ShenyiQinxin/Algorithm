@@ -40,3 +40,16 @@ public ReverseWords{
 		}
 	}
 }
+
+/*
+		for(int i=0; i<=message.length; i++){
+			
+			if(i == message.length || message[i] == ' '){
+				
+				reverseCharacters(message, currentWordStartIndex, i-1);
+				
+				currentWordStartIndex = i+1;
+			}
+		}
+
+*/

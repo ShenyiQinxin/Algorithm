@@ -41,3 +41,17 @@ public MergeSortedArrays{
 	}
 	//end method
 }
+
+/*
+			if(!isMyArrayExhausted && 
+				(isAlicesArraysExhausted || 
+					(myArray[currentIndexMine] < alicesArray[currentIndexAlices]))
+			  ){
+					mergedArray[currentIndexMerged] = myArray[currentIndexMine];
+					currentIndexMine++;
+			} else {
+				mergedArray[currentIndexMerged] = alicesArray[currentIndexAlice];
+				currentIndexAlices++;
+			}
+			currentIndexMerged++;
+*/

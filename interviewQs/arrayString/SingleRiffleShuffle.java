@@ -29,3 +29,16 @@ public SingleRiffleShuffle{
 		return true;
 	} //end method
 }
+
+/*
+
+		for(int card: shuffleDeck){
+			if(half1Index < half1.length && card == half1[half1Index]){
+				half1Index++;
+			} else if(half2Index < half2.length && card == card2[half2Index]){
+				half2Index++;
+			} else {
+				return false;
+			}
+		}
+*/
