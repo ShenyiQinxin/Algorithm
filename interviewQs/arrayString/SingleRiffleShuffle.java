@@ -19,7 +19,7 @@ public SingleRiffleShuffle{
 				half1Index++;
 
 			//if top card in half2 is the same as the top card in shuffleDeck
-			} else if(half2Index < half2.length && card == card2[half2Index]){
+			} else if(half2Index < half2.length && card == half2[half2Index]){
 				half2Index++;
 			} else {
 				return false;
