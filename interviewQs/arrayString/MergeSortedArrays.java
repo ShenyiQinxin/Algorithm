@@ -32,7 +32,7 @@ public MergeSortedArrays{
 					currentIndexMine++;
 			} else {
 				//add the item in alicesArray to mergedArray
-				mergedArray[currentIndexMerged] = alicesArray[currentIndexAlice];
+				mergedArray[currentIndexMerged] = alicesArray[currentIndexAlices];
 				currentIndexAlices++;
 			}
 			currentIndexMerged++;

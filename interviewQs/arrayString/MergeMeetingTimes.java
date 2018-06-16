@@ -42,9 +42,8 @@ public MergeMeetingTimes{
 		//make a copy for sortedMeetins
 		List<Meeting> sortedMeetings = new ArrayList<>();
 		for(Meeting meeting: meetings){
-			Meeting meetingCopy = new Meeting(meeting.getStartTime(), meeting.getEndTime());
 			//the sortedMeetings are not sorted yet
-			sortedMeetings.add(meetingCopy);
+			sortedMeetings.add(new Meeting(meeting.getStartTime(), meeting.getEndTime()));
 		}
 		//sort the sortedMeetings by starTime
 		Collections.sort(sortedMeetings, new Comparator<Meeting>(){
@@ -57,15 +56,14 @@ public MergeMeetingTimes{
 		mergedMeetings.add(sortedMeetings.get(0));
 		//merge meetings in one pass
 		for(Meeting currentMeeting: sortedMeetings){
-			Meeting lastMergedMeeting = mergedMeetings.get(mergedMeetings.size()-1);
-			//if currentMeeting overlaps with lastMergedMeeting
+			Meeting lastMeeting = mergedMeetings.get(mergedMeetings.size()-1);
+			//if currentMeeting overlaps with lastMeeting
 			//there is an overlap
-			if(lastMergedMeeting.getEndTime() >= currentMeeting.getStartTime()){
+			if(lastMeeting.getEndTime() >= currentMeeting.getStartTime()){
 				//use the later endTime of the two
-				lastMergedMeeting.setEndTime(max(lastMergedMeeting.getEndTime(), 
-					currentMeeting.getEndTime()));
+				lastMeeting.setEndTime(max(lastMeeting.getEndTime(), currentMeeting.getEndTime()));
 			} else {
-				//if lastMergedMeeting does not overlap with currentMeeting, then add
+				//if lastMeeting does not overlap with currentMeeting, then add
 				//currentMeeting, since meetings are sorted.
 				mergedMeetings.add(currentMeeting);
 			}
@@ -77,11 +75,11 @@ public MergeMeetingTimes{
 
 /*
 		for(Meeting currentMeeting: sortedMeetings){
-			Meeting lastMergedMeeting = mergedMeetings.get(mergedMeetings.size()-1);
+			Meeting lastMeeting = mergedMeetings.get(mergedMeetings.size()-1);
 		
-			if(lastMergedMeeting.getEndTime() >= currentMeeting.getStartTime()){
+			if(lastMeeting.getEndTime() >= currentMeeting.getStartTime()){
 				
-				lastMergedMeeting.setEndTime( max(lastMergedMeeting.getEndTime(), 
+				lastMeeting.setEndTime( max(lastMeeting.getEndTime(), 
 					currentMeeting.getEndTime()) );
 			} else {
 

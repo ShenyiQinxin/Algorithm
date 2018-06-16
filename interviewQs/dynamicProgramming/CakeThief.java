@@ -17,7 +17,7 @@ public CakeThief{
 	public static long maxDuffelBagValue(CakeType[] cakeTypes, int weightCapacity){
 		//array of possible maximum values at every capacity (0 - weightCapacity)
 		long[] maxValuesAtCapacities = new long[weightCapacity+1];
-		
+		//array of capacities
 		for(int currentCapacity =0; currentCapacity <= weightCapacity; currentCapacity++){
 			long currentMaxValue = 0;
 			
@@ -25,7 +25,7 @@ public CakeThief{
 				if(cakeType.weight ==0 && cakeType.value != 0){
 					throw new InfinityException();
 				}
-				//when it is possible to add a cake in
+				//when a cake weights lesser than the currentCapacity
 				if(cakeType.weight <= currentCapacity){
 					long maxValueUsingCake = cakeType.value + 
 						maxValuesAtCapacities[currentCapacity-cakeType.weight];

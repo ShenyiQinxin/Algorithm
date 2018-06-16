@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 /**
 A tree is "superbalanced" 
-if the difference between the depths of any two leaf nodes is no greater than one.
+if the difference between the depths of any two leaf nodeDepthPairs is no greater than one.
 
 1. There are more than 2 different leaf depths
 2. There are exactly 2 leaf depths and they are more than 1 apart.
@@ -33,11 +33,11 @@ public class BinaryTreeNode {
 
 
 
-public BalancedBinaryTree{
+public class BalancedBinaryTree{
 	private static class NodeDepthPair{
 		BinaryTreeNode node;
 		int depth;
-		NodeDepthPair(BinaryTreeNode node, int depth){
+		public NodeDepthPair(BinaryTreeNode node, int depth){
 			this.node = node;
 			this.depth = depth;
 		}
@@ -49,10 +49,10 @@ public BalancedBinaryTree{
 		}
 		
 		List<Integer> depths = new ArrayList<>();
-		Stack<NodeDepthPair> nodes = new Stack<>();
-		nodes.push(new NodeDepthPair(treeRoot, 0));
-		while(!nodes.empty()){
-			NodeDepthPair nodeDepthPair = nodes.pop();
+		Stack<NodeDepthPair> nodeDepthPairs = new Stack<>();
+		nodeDepthPairs.push(new NodeDepthPair(treeRoot, 0));
+		while(!nodeDepthPairs.empty()){
+			NodeDepthPair nodeDepthPair = nodeDepthPairs.pop();
 			BinaryTreeNode node = nodeDepthPair.node;
 			int depth = nodeDepthPair.depth;
 			//leaf
@@ -72,11 +72,11 @@ public BalancedBinaryTree{
 			} else {//non leaf
 				//step down to the left
 				if(node.left != null){
-					nodes.push(new NodeDepthPair(node.left, depth+1));
+					nodeDepthPairs.push(new NodeDepthPair(node.left, depth+1));
 				}
 				//step down to the right
 				if(node.right != null){
-					nodes.push(new NodeDepthPair(node.right, depth+1));
+					nodeDepthPairs.push(new NodeDepthPair(node.right, depth+1));
 				}
 			}
 			

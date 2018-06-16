@@ -1,9 +1,9 @@
 
 //the largest element is simply the "rightmost" element.
-public SecondElementBST{
+public class SecondElementBST{
 	
-	private static int findLargest(BinaryTreeNode rootNode){
-		BinaryTreeNode current = rootNode;
+	private static int findLargest(BinarySTreeNode rootNode){
+		BinarySTreeNode current = rootNode;
 		//in BST, the largest value is the "rightmost" one
 		while(current.right != null){
 			current = current.right;
@@ -11,11 +11,11 @@ public SecondElementBST{
 		return current.value;
 	}//end method
 	
-	public static int findSecondLargest(BinaryTreeNode rootNode){
+	public static int findSecondLargest(BinarySTreeNode rootNode){
 		if(rootNode == null || (rootNode.left == null && rootNode.right == null)){
 			throw new IllegalArgumentException("Tree must have at least 2 nodes");
 		}
-		BinaryTreeNode current = rootNode;
+		BinarySTreeNode current = rootNode;
 		
 		while(true){
 			//there is a left subtree, the right one is a leaf

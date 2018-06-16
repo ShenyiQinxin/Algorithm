@@ -8,11 +8,11 @@ public class LinkedListNode {
     }
 }
 /*
-LinkedListNode a = new LinkedListNode("Angel Food");
-LinkedListNode b = new LinkedListNode("Bundt");
-LinkedListNode c = new LinkedListNode("Cheese");
-LinkedListNode d = new LinkedListNode("Devil's Food");
-LinkedListNode e = new LinkedListNode("Eccles");
+LinkedListNode a = new LinkedListNode("Angel Food");0
+LinkedListNode b = new LinkedListNode("Bundt");1
+LinkedListNode c = new LinkedListNode("Cheese");2
+LinkedListNode d = new LinkedListNode("Devil's Food");3
+LinkedListNode e = new LinkedListNode("Eccles");4
 
 a.next = b;
 b.next = c;
@@ -21,7 +21,7 @@ d.next = e;
 
 kthToLastNode(2, a);
 
-// returns the node with value "Devil's Food" (the 2nd to last node)
+// returns the node with value "Devil's Food" (the 3nd to last node)
 //from the end, walk back 2 node
 */
 public KthToLastNode{

@@ -36,7 +36,7 @@ public BinarySearchTreeChecker{
 		int lowerBound;
 		int upperBound;
 		
-		NodeBounds(BinaryTreeNode node, int lowerBound, int upperBound){
+	    NodeBounds(BinaryTreeNode node, int lowerBound, int upperBound){
 			this.node = node;
 			this.lowerBound = lowerBound;
 			this.upperBound = upperBound;
@@ -75,10 +75,10 @@ public BinarySearchTreeChecker{
 	}//end method
 	
 	//recursive
-	public static boolean isBinarySearchTree(BinaryTreeNode root){
-		return isBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	public static boolean isBinarySearchTreeRecursive(BinaryTreeNode root){
+		return isBinarySearchTreeRecursive(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
-	private static boolean isBinarySearchTree(BinaryTreeNode root, 
+	private static boolean isBinarySearchTreeRecursive(BinaryTreeNode root, 
 		int lowerBound, int upperBound){
 			if(root == null){
 				return true;
@@ -86,8 +86,8 @@ public BinarySearchTreeChecker{
 			if(root.value >= upperBound || root.value <= lowerBound){
 				return false;
 			}
-			return isBinarySearchTree(root.left, lowerBound, root.value)
-				&& isBinarySearchTree(root.right, root.value, upperBound);
+			return isBinarySearchTreeRecursive(root.left, lowerBound, root.value)
+				&& isBinarySearchTreeRecursive(root.right, root.value, upperBound);
 	}
 	//end method
 }

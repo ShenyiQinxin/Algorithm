@@ -10,7 +10,7 @@ public RecursiveStringPermutation{
 			return new HashSet<>(Collections.singletonList(inputString));
 		}
 		//ca 
-		String allCharsExceptLast = inputString.subString(0, inputString.length()-1);
+		String allCharsExceptLast = inputString.substring(0, inputString.length()-1);
 		//t
 		char lastChar = inputString.charAt(inputString.length()-1);
 		
@@ -22,7 +22,7 @@ public RecursiveStringPermutation{
 			//"ca"
 			for(int i=0; i<=allCharsExceptLast.length(); i++){
 				
-				//put the last char in all possible positions for relative eachPermutationExceptLast
+				//put the last char in all possible positions for the relative eachPermutationExceptLast
 				String permutation = eachPermutationExceptLast.substring(0, i)
 					+lastChar+eachPermutationExceptLast.substring(i);
 				permutations.add(permutation);
