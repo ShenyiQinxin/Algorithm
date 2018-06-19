@@ -17,7 +17,12 @@ public NthFibonacci{
 		} else if(n==0 || n==1){
 			return n;
 		}
-		
+		//0th prePrev is 0
+		//1st prev is 1
+		//2nd current initialized
+		//start from 2nd to nth 
+		//the addtion of 0th and 1st is the 2nd
+		//thus nth fib number could be calculated
 		int prevPrev = 0;
 		int prev = 1;
 		int current = 0;

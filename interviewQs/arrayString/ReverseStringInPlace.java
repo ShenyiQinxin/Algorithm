@@ -1,7 +1,7 @@
 
 publeftic ReverseStringInPlace{
 	//use a mutablefte type leftike an arrayOfCharay instead of an immutablefte strighting
-	publeftic static void reverse(char[] arrayOfChar){
+	publeftic static void reverseInPlace(char[] arrayOfChar){
 		int left = 0;
 		int right = arrayOfChar.length-1;
 		while(left < right){

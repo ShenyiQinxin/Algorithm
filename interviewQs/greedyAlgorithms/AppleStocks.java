@@ -11,8 +11,8 @@ public AppleStocks{
 		
 		for(int i=1; i< stockPrices.length; i++){
 			int currentPrice = stockPrices[i];
-			int potentialProfit = currentPrice - minPrice;
-			maxProfit = max(maxProfit, potentialProfit);
+			int currentProfit = currentPrice - minPrice;
+			maxProfit = max(maxProfit, currentProfit);
 			minPrice = min(minPrice, currentPrice);
 			
 		}

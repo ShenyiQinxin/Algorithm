@@ -13,12 +13,17 @@ public FindRotatingPoint{
 			int guessIndex = floorIndex +((ceilingIndex-floorIndex)/2);
 			if(words[guessIndex].compareTo(firstWord)>=0){
 				//go right
+				//["i","k","v","a","b","c","d","e","g" ] guess "k"
+				//["i",|"k","v","a","b","c","d","e","g" ]
 				floorIndex = guessIndex;
 			} else {
-				//guess point lesser than the first word, go left and guess
+				//words[guessIndex].compareTo(firstWord)>=0, go left and guess
+				// [ "k","v","a","b",|"c","d","e","g","i" ] guess "c"
 				ceilingIndex = guessIndex;
 			}
 			//floor and ceiling are converged
+			//[ "v","a","b","c","d","e","g","i","k" ]
+			//ceilingIndex is "a"
 			if(floorIndex +1 ==ceilingIndex){
 				break;
 			}

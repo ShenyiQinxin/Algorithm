@@ -30,6 +30,8 @@ public CakeThief{
 					long maxValueUsingCake = cakeType.value + 
 						maxValuesAtCapacities[currentCapacity-cakeType.weight];
 					//compare the values before and after adding a cake value 
+					//currentMaxValue is from another cakeType, 
+					//maxValueUsingCake is from the current cake tring
 					currentMaxValue = max(maxValueUsingCake, currentMaxValue);
 				}
 			}

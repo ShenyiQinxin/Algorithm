@@ -59,7 +59,7 @@ public MergeMeetingTimes{
 			Meeting lastMeeting = mergedMeetings.get(mergedMeetings.size()-1);
 			//if currentMeeting overlaps with lastMeeting
 			//there is an overlap
-			if(lastMeeting.getEndTime() >= currentMeeting.getStartTime()){
+			if(currentMeeting.getStartTime() <= lastMeeting.getEndTime()){
 				//use the later endTime of the two
 				lastMeeting.setEndTime(max(lastMeeting.getEndTime(), currentMeeting.getEndTime()));
 			} else {

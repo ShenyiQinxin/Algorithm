@@ -15,6 +15,7 @@ public RecursiveStringPermutation{
 		char lastChar = inputString.charAt(inputString.length()-1);
 		
 		//recursive call
+		//recursive call: get all possible permutations for all chars except last
 		Set<String> permutationsOfAllCharsExceptLast = getPermutations(allCharsExceptLast);
 		
 		Set<String> permutations = new HashSet<>();

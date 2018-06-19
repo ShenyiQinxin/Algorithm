@@ -24,7 +24,7 @@ public MergeSortedArrays{
 			//if myArray is not exhausted, and (alicesArray is exhausted or 
 			//the current item in myArray is smaller than alicesArray
 			if(!isMyArrayExhausted && 
-				(isAlicesArraysExhausted || 
+				(isAlicesArrayExhausted || 
 					(myArray[currentIndexMine] < alicesArray[currentIndexAlices]))
 			  ){
 					//add the item in myArray to mergedArray
