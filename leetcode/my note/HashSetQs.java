@@ -1,3 +1,7 @@
+public class HashSetQs{
+
+}
+
 /**
 You're given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in S is a type of stone you have.  You want to know how many of the stones you have are also jewels.
 
@@ -41,9 +45,7 @@ then count++;
 3. string convert to char[](toCharArray)
 
 */
-public class HashSetQs{
 
-}
 class Solution771JewelsAndStones{
 	public int numJewelsInStones(String J, String S) {
 		Set<Character> Jset = HashSet<>();
