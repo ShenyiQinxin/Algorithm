@@ -171,27 +171,68 @@ class Solution653TwoSumIVInputBST {
 
 
 /**
+Design and implement a TwoSum class. It should support the following operations: add and find.
+
+add - Add the number to an internal data structure.
+find - Find if there exists any pair of numbers which sum is equal to the value.
+
+Example 1:
+
+add(1); add(3); add(5);
+find(4) -> true
+find(7) -> false
+
+Example 2:
+
+add(3); add(1); add(2);
+find(3) -> true
+find(6) -> false
 
 **********My thoughts
+use arraylist 
+but Time Limit Exceeded
+
 **********Better solution
+hashmap
+k:v
+number: counts
+
 **********Takeaways
+hashmap deal with duplicate elements in a non-dup formate
+
+map.getOfDefault(key,0)+1;
+
+map.keySet();
+
+map.get(k);
+
+map.containsKey(k);
+
+
+
 */
 
 class TwoSumIIIDataStructureDesign {
-
+    private Map<Integer, Integer> map;
     /** Initialize your data structure here. */
-    public TwoSum() {
-        
+    public TwoSumIIIDataStructureDesign() {
+        this.map = new HashMap<>();
     }
     
     /** Add the number to an internal data structure.. */
     public void add(int number) {
-        
+        map.put(number, map.getOrDefault(number, 0)+1);
     }
     
     /** Find if there exists any pair of numbers which sum is equal to the value. */
-    public boolean find(int value) {
-        
+    public boolean find(int value) {  
+        for(Integer k:map.KeySet()){
+            Integer rest = value - k;
+            if((rest==k && map.get(k)>1) || (rest!=k && map.containsKey(rest))){
+                return true;
+            }
+        }
+        return false;
     }
 }
 

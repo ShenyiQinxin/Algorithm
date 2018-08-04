@@ -114,3 +114,112 @@ class Solution349IntersectionOfTwoArrays{
 			return result;
 	}
 }
+
+/**
+Given two lists Aand B, and B is an anagram of A. B is an anagram of A means B is made by randomizing the order of the elements in A.
+
+We want to find an index mapping P, from A to B. A mapping P[i] = j means the ith element in A appears in B at index j.
+
+These lists A and B may contain duplicates. If there are multiple answers, output any of them.
+
+For example, given
+
+A = [12, 28, 46, 32, 50]
+B = [50, 12, 32, 46, 28]
+We should return
+[1, 4, 3, 2, 0]
+as P[0] = 1 because the 0th element of A appears at B[1], and P[1] = 4 because the 1st element of A appears at B[4], and so on.
+Note:
+
+A, B have equal lengths in range [1, 100].
+A[i], B[i] are integers in range [0, 10^5].
+
+*********My thought: 
+A indexs the indexs
+B indexs the values
+if A[i]==B[j], then arr[i]=j
+k:v 
+A[i]:i
+*********Better solution:
+Hashmap
+put B : i
+iterate through A
+get value by key from A, since A and B share elements
+pass values to result[]
+
+*********takeaways:
+HashMap could be used to get value by key
+since there may be dups but only output any of them, so hashmap is a good option
+
+*/
+class Solution760FindAnagramMappings {
+    public int[] anagramMappings(int[] A, int[] B) {
+    	Map<Integer, Integer> map = new Hashmap<>();
+        for(int i=0; i<B.length; i++){
+        	map.put(B[i], i);
+        }
+        int[] result = new int[A.length];
+        for(int i=0; i<A.length; i++){
+        	result[i]=map.get(A[i]);
+        }
+        return result;
+    }
+}
+
+/**
+Given a List of words, return the words that can be 
+typed using letters of alphabet on only one row's of American keyboard like the image below.
+Example 1:
+Input: ["Hello", "Alaska", "Dad", "Peace"]
+Output: ["Alaska", "Dad"]
+Note:
+You may use one character in the keyboard more than once.
+You may assume the input string will only contain letters of alphabet.
+
+*********My thought: 
+for each word, if it belongs to one single row on keyboard
+then put the word in output array
+*********Better solution:
+
+ return 
+ Stream.of(words).filter(s -> 
+ s.toLowerCase()
+ .matches("[qwertyuiop]*|[asdfghjkl]*|[zxcvbnm]*"))
+ .toArray(String[]::new);
+
+*********takeaways:
+regex, stream
+*/
+class Solution500KeyboardRow {//O(n^2)
+    public String[] findWords(String[] words) {
+    	String[] result = new String[];
+        for(int[] i=0; i<words.length; i++){
+        	if(wordInOneRow(word[i])){
+        		result[j]=word;
+        	}
+        }
+        return result;
+    }
+
+    private boolean wordInOneRow(String word){
+    	//char[] c1= new char[7];
+    	//char[] c2 = new char[9];
+    	//char[] c3 = new char[10];
+    	Map<Character, Integer> map = new Hashmap<>();
+    	map.put('A', 2);
+    	map.put('B', 1);
+    	//...
+    	int i=0, one=0, two=0, three=0;
+    	char c = word.charAt(i);
+    	for(; i<word.length; i++){
+    		if(1==map.get(c)) one++;
+    		if(2==map.get(c)) two++;
+    		if(3==map.get(c)) three++;
+    	}
+    	//
+    	if(one ==word.length() || two== word.length || three==word.length){
+    		return true;
+    	}
+    	return false;
+    }
+}
