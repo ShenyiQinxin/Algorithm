@@ -34,21 +34,22 @@ mid = l+(r-l)/2
 **********TakeAway:
 O(lgN) < O(n)
 binary problems usually ask you to find the position of the first or last element who satisfy conditions
+if l<=r, then it could handle [5]
 
 */
 class Solution704BinarySearch {
     public int search(int[] nums, int target) {
-    	int floorIndex = -1;
-    	int ceilingIndex = nums.length;
-
-        while(floorIndex+1 < ceilingIndex){
-        	mid = floorIndex + (ceilingIndex - floorIndex)/2;
-        	if(nums[mid]==target){
+    	if(nums==null || nums.length==0) return 0;
+        int l=0, r=nums.length-1;
+       
+        while(l <= r){
+             int mid = (r+l)/2;
+        	if(nums[mid] == target) {
         		return mid;
-        	} else if(nums[mid]>target){
-        		ceilingIndex = mid;
+        	} else if (nums[mid] > target){
+        		r = mid-1;
         	} else {
-        		floorIndex = mid;
+        		l = mid+1;
         	}
         }
         return -1;
@@ -127,16 +128,126 @@ Explanation: The square root of 8 is 2.82842..., and since
 **********My thought:
 y*y=x
 **********better solution:
-
+x/mid == mid
+when l>r , return r
 **********TakeAway:
-
+2 types of BiSearch
+search index:
+search value:
 */
 class Solution69Sqrtx {
     public int mySqrt(int x) {
-        int l=1, r=x;
-        while(l<r){
-        	mid = l+(r-l)/2;
-        	if(mid*mid==x)
+    	if(x<=1) return x;
+
+        int l=0, r=x;
+        while(l <= r){
+        	int mid = l+(r-l)/2;
+        	if(x/mid==mid){
+        		return mid;
+        	} else if(x/mid < mid){
+        		r = mid-1;
+        	} else {
+        		l = mid+1;
+        	}
         }
+        //l>r
+        return r;
+    }
+}
+
+
+/**
+Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be 
+if it were inserted in order.
+
+You may assume no duplicates in the array.
+
+Example 1:
+
+Input: [1,3,5,6], 5
+Output: 2
+Example 2:
+
+Input: [1,3,5,6], 2
+Output: 1
+Example 3:
+
+Input: [1,3,5,6], 7
+Output: 4
+Example 4:
+
+Input: [1,3,5,6], 0
+Output: 0
+
+**********My thought:
+binarysearch
+if target == nums[i] then found it
+if nums[i-1] < target < nums[i]
+then insert nums[i]=target
+**********better solution:
+nums == null or nums.length ==0
+mid = (l+r) /2
+**********TakeAway:
+when l is just larger than r, then return l
+*/
+
+class Solution35 {
+    public int searchInsert(int[] nums, int target) {
+    	if(nums == null||nums.length == 0) return 0;
+        
+        int l=0, r=nums.length-1;
+        
+        while(l <= r){
+        	int mid = (l+r)/2;
+        	if(nums[mid]==target){
+        		return mid;
+        	} else if(nums[mid]>target){
+        		return r = mid-1;
+        	} else {
+        		l = mid+1;
+        	}
+        }
+        // l > r
+        return l;
+    }
+}
+
+/*
+Given a positive integer num, write a function which returns True if num is a perfect square else False.
+
+Note: Do not use any built-in library function such as sqrt.
+
+Example 1:
+
+Input: 16
+Returns: True
+Example 2:
+
+Input: 14
+Returns: False
+
+
+**********My thought:
+4*4==16, 16/4
+**********better solution:
+
+**********TakeAway:
+*/
+class Solution367ValidPerfectSquare {
+    public boolean isPerfectSquare(int num) {
+    	
+        int l=1, r=num/2;
+        while(l<=r){
+        	int mid = l+(r-l)/2;
+        	if(num/mid == mid){
+        		return true;
+        	} else if(num/mid < mid){
+        		r= mid-1;
+        	} else {
+        		l = mid+1;
+        	}
+        }
+        return false;
+
     }
 }
