@@ -393,7 +393,7 @@ class Solution {
 }
 /*
 349. Intersection of Two Arrays
-DescriptionHintsSubmissionsDiscussSolution
+
 Given two arrays, write a function to compute their intersection.
 
 Example 1:
@@ -414,10 +414,30 @@ The result can be in any order.
 
 **********Takeaways
 */
-
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+    	Set<Integer> set = new HashSet<>();
+        for(int num: nums1) {
+            set.add(num);
+        }
+        //list for intersection
+        List<Integer> list = new ArrayList<>();
+        for(int num:nums2){
+            if(set.contains(num)){
+                list.add(num);
+                set.remove(num);
+            }
+        }
+        int[] result = new int[list.size()];
+        for(int i=0; i<list.size(); i++){
+            result[i] = list.get(i);
+        }
+        return result;
+    }
+}
 /*
 350. Intersection of Two Arrays II
-DescriptionHintsSubmissionsDiscussSolution
+
 Given two arrays, write a function to compute their intersection.
 
 Example:
@@ -436,6 +456,30 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 
 **********Takeaways
 */
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+    	Map<Integer, Integer> map = new HashMap<>();
+    	for(int num : nums1) {
+    		map.put(num, map.getOrDefault(num,0) + 1);
+    	}
+    	//list for intersection
+    	ArrayList<Integer> list = new ArrayList<>();
+    	
+    	for(int num : nums2) {
+    		if(map.containsKey(num) && map.get(num)>0) {
+    			map.put(num, map.get(num) -1);
+    			list.add(num);
+    			
+    		} 
+    	}
+        int[] result = new int[list.size()];   
+        for(int i=0; i<list.size(); i++){
+            result[i] = list.get(i);
+        }
+    	return result;
+    }
+}
+
 
 /*
 
