@@ -21,11 +21,6 @@ Example 2:
 Input: [4,3,2,1]
 Output: [4,3,2,2]
 Explanation: The array represents the integer 4321.
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public int[] plusOne(int[] digits) {
@@ -57,11 +52,6 @@ Follow up:
 
 If you have figured out the O(n) solution, try coding another solution using the divide 
 and conquer approach, which is more subtle.
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public int maxSubArray(int[] nums) {
@@ -91,11 +81,7 @@ nums1 = [1,2,3,0,0,0], m = 3
 nums2 = [2,5,6],       n = 3
 
 Output: [1,2,2,3,5,6]
-**********My thoughts
 
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
@@ -144,11 +130,6 @@ Explanation: There are three ways to climb to the top.
 1. 1 step + 1 step + 1 step
 2. 1 step + 2 steps
 3. 2 steps + 1 step
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public int climbStairs(int n) {
@@ -176,12 +157,6 @@ Note:
 
 You must do this in-place without making a copy of the array.
 Minimize the total number of operations.
-
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public void moveZeroes(int[] nums) {
@@ -233,11 +208,6 @@ int len = removeDuplicates(nums);
 for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public int removeDuplicates(int[] nums) {
@@ -277,11 +247,7 @@ Note:
 
 Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
 Could you do it in-place with O(1) extra space?
-**********My thoughts
 
-**********Better solution
-
-**********Takeaways
 */
 public class Solution {
     public void rotate(int[] nums, int k) {
@@ -344,11 +310,6 @@ for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
 
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public int removeElement(int[] nums, int val) {
@@ -375,11 +336,6 @@ Explanation: n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).
 Note:
 n is a positive integer, which is in the range of [1, 10000].
 All the integers in the array will be in the range of [-10000, 10000].
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public int arrayPairSum(int[] nums) {
@@ -408,11 +364,6 @@ Note:
 
 Each element in the result must be unique.
 The result can be in any order.
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
@@ -449,12 +400,8 @@ The result can be in any order.
 Follow up:
 What if the given array is already sorted? How would you optimize your algorithm?
 What if nums1's size is small compared to nums2's size? Which algorithm is better?
-What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
+What if elements of nums2 are stored on disk, and the memory is limited such that 
+you cannot load all elements into the memory at once?
 */
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
