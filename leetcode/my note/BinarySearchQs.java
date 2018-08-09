@@ -3,6 +3,8 @@ public class BinarySearchQs{
 }
 
 /**
+704BinarySearch
+
 Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. 
 If target exists, then return its index, otherwise return -1.
 
@@ -37,7 +39,7 @@ binary problems usually ask you to find the position of the first or last elemen
 if l<=r, then it could handle [5]
 
 */
-class Solution704BinarySearch {
+class Solution {
     public int search(int[] nums, int target) {
     	if(nums==null || nums.length==0) return 0;
         int l=0, r=nums.length-1;
@@ -57,6 +59,7 @@ class Solution704BinarySearch {
 }
 
 /**
+278FirstBadVersion
 
 you are a product manager and currently leading a team to develop a new product. Unfortunately, 
 the latest version of your product fails the quality check. Since each version is developed based on the previous version, 
@@ -88,7 +91,7 @@ when isBadVersion(i) is true, isBadVersion(i-1) is not true
 /* The isBadVersion API is defined in the parent class VersionControl.
       boolean isBadVersion(int version); */
 
-class Solution278FirstBadVersion extends VersionControl {
+class Solution extends VersionControl {
     public int firstBadVersion(int n) {
         int l = 1, r = n;
         int mid = 0;
@@ -108,6 +111,8 @@ class Solution278FirstBadVersion extends VersionControl {
 }
 
 /**
+69Sqrtx 
+
 Implement int sqrt(int x).
 
 Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
@@ -135,7 +140,7 @@ when l>r , return r
 search index:
 search value:
 */
-class Solution69Sqrtx {
+class Solution {
     public int mySqrt(int x) {
     	if(x<=1) return x;
 
@@ -157,6 +162,7 @@ class Solution69Sqrtx {
 
 
 /**
+35 search insert position
 Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be 
 if it were inserted in order.
 
@@ -191,7 +197,7 @@ mid = (l+r) /2
 when l is just larger than r, then return l
 */
 
-class Solution35 {
+class Solution {
     public int searchInsert(int[] nums, int target) {
     	if(nums == null||nums.length == 0) return 0;
         
@@ -213,6 +219,8 @@ class Solution35 {
 }
 
 /*
+367ValidPerfectSquare
+
 Given a positive integer num, write a function which returns True if num is a perfect square else False.
 
 Note: Do not use any built-in library function such as sqrt.
@@ -233,7 +241,7 @@ Returns: False
 
 **********TakeAway:
 */
-class Solution367ValidPerfectSquare {
+class Solution {
     public boolean isPerfectSquare(int num) {
     	
         int l=1, r=num/2;
@@ -251,3 +259,64 @@ class Solution367ValidPerfectSquare {
 
     }
 }
+
+/*
+14. Longest Common Prefix
+DescriptionHintsSubmissionsDiscussSolution
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+
+Example 1:
+
+Input: ["flower","flow","flight"]
+Output: "fl"
+Example 2:
+
+Input: ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+Note:
+
+All given inputs are in lowercase letters a-z.
+**********My thoughts
+
+**********Better solution
+
+**********Takeaways
+*/
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs == null || strs.length ==0) return "";
+        int minLength = Integer.MAX_VALUE;
+        for (String str : strs) {
+            minLength = Math.min(minLength, str.length());
+        }
+        int left = 1, right = minLength;
+        while(left <= right) {
+            int mid = (left + right )/2;
+            if(isCommonPrefix(strs, mid)) {
+                left = mid +1;//-->
+            } else {
+                right = mid -1;//<--
+            }
+        }
+        return strs[0].substring(0,  (left+right)/2);
+    }
+    private boolean isCommonPrefix(String[] strs, int length){
+        String str1 = strs[0].substring(0, length);
+        for(int i=1; i< strs.length; i++){
+            if(!strs[i].startsWith(str1)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+/*
+**********My thoughts
+
+**********Better solution
+
+**********Takeaways
+*/

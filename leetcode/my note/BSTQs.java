@@ -1,6 +1,238 @@
-public class TreeQs{
+public class BSTQs{
 	
 }
+
+/*
+108. Convert Sorted Array to Binary Search Tree
+
+Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
+
+For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+
+Example:
+
+Given the sorted array: [-10,-3,0,5,9],
+
+One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:
+
+      0
+     / \
+   -3   9
+   /   /
+ -10  5
+**********My thoughts
+
+**********Better solution
+
+**********Takeaways
+*/
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if(nums.length == 0) return null;
+        TreeNode head = getHead(nums, 0, nums.length -1);
+        return head;
+    }
+
+    private TreeNode getHead(int[] nums, int l, int r) {
+    	if(l > r) return null;
+    	int mid = (l+r)/2;
+    	TreeNode node = new TreeNode(nums[mid]);
+    	node.left = getHead(nums, l, mid-1);
+    	node.right = getHead(nums, mid+1, r);
+    	return node;
+    }
+}
+
+/*
+235. Lowest Common Ancestor of a Binary Search Tree
+DescriptionHintsSubmissionsDiscussSolution
+Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
+
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+
+Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
+
+        _______6______
+       /              \
+    ___2__          ___8__
+   /      \        /      \
+   0      _4       7       9
+         /  \
+         3   5
+Example 1:
+
+Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+Output: 6
+Explanation: The LCA of nodes 2 and 8 is 6.
+Example 2:
+
+Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+Output: 2
+Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself 
+             according to the LCA definition.
+Note:
+
+All of the nodes' values will be unique.
+p and q are different and both values will exist in the BST.
+**********My thoughts
+
+**********Better solution
+
+**********Takeaways
+*/
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        while(true) {
+        	if(p.val <= root.val && q.val >= root.val || 
+        		q.val <= root.val && q.val <= root.val) {
+        		return root;
+        	} else if(p.val >root.val && q.val > root.val) {
+        		root = root.val;
+        	} else {
+        		root = root.val;
+        	}
+        }
+    }
+}
+
+/*
+653. Two Sum IV - Input is a BST
+
+Given a Binary Search Tree and a target number, return true if there exist two elements 
+in the BST such that their sum is equal to the given target.
+
+Example 1:
+Input: 
+    5
+   / \
+  3   6
+ / \   \
+2   4   7
+
+Target = 9
+
+Output: True
+Example 2:
+Input: 
+    5
+   / \
+  3   6
+ / \   \
+2   4   7
+
+Target = 28
+
+Output: False
+**********My thoughts
+
+**********Better solution
+
+**********Takeaways
+*/
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean findTarget(TreeNode root, int k) {
+    	List<Integer> list = new ArrayList<>();
+    	inOrder(root, list);
+    	int l=0, r=list.size()-1;
+
+    	while(l<r){
+    		int sum = list.get(l) + list.get(r);
+    		if(sum == k) {
+    			return true;
+    		} else if (sum<k) {
+    			l++;
+    		} else {
+    			r--;
+    		}
+    	}
+    	return false;
+    }
+
+    private void inOrder(TreeNode root, List<Integer> list) {
+    	if(root == null) return;
+    	inOrder(root.left, list);
+    	list.add(root.val);
+    	inOrder(root.right, list);
+    }
+}
+
+/*
+700. Search in a Binary Search Tree
+
+Given the root node of a binary search tree (BST) and a value. You need to find the node in the BST that the node's value equals the given value. Return the subtree rooted with that node. If such node doesn't exist, you should return NULL.
+
+For example, 
+
+Given the tree:
+        4
+       / \
+      2   7
+     / \
+    1   3
+
+And the value to search: 2
+You should return this subtree:
+
+      2     
+     / \   
+    1   3
+In the example above, if we want to search the value 5, since there is no node with value 5, we should return NULL.
+
+Note that an empty tree is represented by NULL, therefore you would see the expected output (serialized tree format) as [], not null.
+
+
+**********My thoughts
+
+**********Better solution
+
+**********Takeaways
+*/
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode searchBST(TreeNode root, int val) {
+    	while(root != null && root.val != val) {
+    		root = val < root.val ? root.left : root.right;
+    	}
+    	return root;
+    }
+}
+
+
 
 /**
 preorder/inorder traversal binary tree ------------- O(n)
