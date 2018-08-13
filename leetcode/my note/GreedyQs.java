@@ -1,7 +1,34 @@
 public class GreedyQs {
 	
 }
+/*
+53. Maximum Subarray
 
+Given an integer array nums, find the contiguous subarray 
+(containing at least one number) which has the largest sum and return its sum.
+
+Example:
+
+Input: [-2,1,-3,4,-1,2,1,-5,4],
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+Follow up:
+
+If you have figured out the O(n) solution, try coding another solution using the divide 
+and conquer approach, which is more subtle.
+*/
+class Solution {
+    public int maxSubArray(int[] nums) {
+    	int maxSoFar = nums[0];
+    	int maxEndingHere = nums[0];
+    	for(int i=1; i<nums.length; i++){
+
+    		maxEndingHere = Math.max(maxEndingHere+nums[i], nums[i]);;
+    		maxSoFar = Math.max(maxSoFar, maxEndingHere);
+    	}
+    	return maxSoFar;
+    }
+}
 /*
 121. Best Time to Buy and Sell Stock
 
@@ -48,7 +75,7 @@ class Solution {
 Say you have an array for which the ith element is the price of a given stock on day i.
 
 Design an algorithm to find the maximum profit. You may complete 
-as many transactions as you like (i.e., buy one and sell one share of the stock MULTIPLE times).
+as MANY transactions as you like (i.e., buy one and sell one share of the stock MULTIPLE times).
 
 Note: You may not engage in multiple transactions at the same time 
 (i.e., you must sell the stock before you buy again).
@@ -71,11 +98,7 @@ Example 3:
 Input: [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
-**********My thoughts
 
-**********Better solution
-
-**********Takeaways
 */
 class Solution {
     public int maxProfit(int[] prices) {
@@ -91,9 +114,13 @@ class Solution {
 /*
 198. House Robber
 
-You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+You are a professional robber planning to rob houses along a street. 
+Each house has a certain amount of money stashed, the only constraint stopping you 
+from robbing each of them is that adjacent houses have security system connected 
+and it will automatically contact the police if two adjacent houses were broken into on the same night.
 
-Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.
+Given a list of non-negative integers representing the amount of money of each house, 
+determine the maximum amount of money you can rob tonight without alerting the police.
 
 Example 1:
 
@@ -140,11 +167,7 @@ Example 2:
 
 Input: [[7,10],[2,4]]
 Output: true
-**********My thoughts
 
-**********Better solution
-
-**********Takeaways
 */
 /**
  * Definition for an interval.

@@ -103,7 +103,7 @@ left and right equal or not
 */
 class Solution {
     public boolean isPalindrome(String s0) {
-        String s = s0.toLowerCase();
+       // String s = s0.toLowerCase();
         if(s.length()==0 || s== null) {
         	return true;
         }
@@ -126,7 +126,7 @@ class Solution {
     }
 
     private boolean isvalid(char c) {
-    	if(c>='0'&&c<='9' || c>='a'&&c<='z') {
+    	if(c>='0'&&c<='9' || c>='a'&&c<='z' || c>='A' && c<='Z') {
     		return true;
     	}
     	return false;
@@ -181,6 +181,48 @@ class Solution {
 
    
 }
+
+/*
+Write a recursive method for generating all permutations of an input string. Return them as a set.
+These are our permutations of "cat":
+
+  cat
+cta
+atc
+act
+tac
+tca
+*/
+class Solution{
+  public static Set<String> getPermutations(String s) {
+
+    // base case
+    int n = s.length();
+    if (n <= 1) {
+        return new HashSet<>(Collections.singletonList(s));
+    }
+
+    String preLast = s.substring(0, n - 1);
+    char lastChar = s.charAt(n - 1);
+
+    // recursive call: get all possible permutations for all chars except last
+    Set<String> ps = getPermutations(prelast);
+
+    // put the last char in all possible positions for each of the above permutations
+    Set<String> set = new HashSet<>();
+    for (String p : ps) {
+        for (int i = 0; i <= preLast.length(); i++) {
+          //lastChar put in i:0, 1, ..
+            String permutation = p.substring(0, i) + lastChar
+                + p.substring(i);
+            set.add(permutation);
+        }
+    }
+
+    return set;
+}
+}
+
 /*
 28. Implement strStr()
 
@@ -208,10 +250,10 @@ This is consistent to C's strstr() and Java's indexOf().
 */
 class Solution {
     public int strStr(String haystack, String needle) {
-       if(needle == null || haystack == null ||
+      if(needle == null || haystack == null ||
        	haystack.length() < needle.length()) return -1; 
 
-       if(needle.length() == 0) return 0;
+      if(needle.length() == 0) return 0;
 
    		for (int i=0; i<=haystack.length()-needle.length(); i++) {
    			//suppose i is the start index of the needle in haystack

@@ -221,7 +221,7 @@ class Solution {
 			TreeNode t2 = q.poll();
 			if(t1 == null && t2 == null) continue;
 			if(t1 == null || t2 == null) return false;
-			if(t1.val 1= t2.val) return false;
+			if(t1.val != t2.val) return false;
 			q.add(t1.left);
 			q.add(t2.right);
 			q.add(t1.right);
@@ -230,18 +230,3 @@ class Solution {
 		return true;
 	}
 }
-/*
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
-*/
-
-/*
-**********My thoughts
-
-**********Better solution
-
-**********Takeaways
-*/

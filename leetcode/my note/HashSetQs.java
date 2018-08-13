@@ -23,7 +23,9 @@ The characters in J are distinct.
 
 
 /*
-**********My thought: 
+**********My thought: +
+
+
 put each letter in S into a hashmap
 a:1 
 A:2 

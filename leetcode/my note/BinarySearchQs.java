@@ -43,9 +43,9 @@ class Solution {
     public int search(int[] nums, int target) {
     	if(nums==null || nums.length==0) return 0;
         int l=0, r=nums.length-1;
-       
+       //when l == r, it handles [5]
         while(l <= r){
-             int mid = (r+l)/2;
+             int mid = l + (r-l)/2;
         	if(nums[mid] == target) {
         		return mid;
         	} else if (nums[mid] > target){
@@ -95,7 +95,7 @@ class Solution extends VersionControl {
     public int firstBadVersion(int n) {
         int l = 1, r = n;
         int mid = 0;
-
+        //if l==r, then return 1
         while(l < r){
         	mid = l + (r-l)/2;
         	if(isBadVersion(mid)){
@@ -105,7 +105,7 @@ class Solution extends VersionControl {
         	}
         	
         }
-        //l=r
+        //l==r
         return l;
     }
 }
@@ -204,7 +204,7 @@ class Solution {
         int l=0, r=nums.length-1;
         
         while(l <= r){
-        	int mid = (l+r)/2;
+        	int mid = l+(r-l)/2;
         	if(nums[mid]==target){
         		return mid;
         	} else if(nums[mid]>target){
@@ -246,6 +246,7 @@ class Solution {
     	
         int l=1, r=num/2;
         while(l<=r){
+            //if 
         	int mid = l+(r-l)/2;
         	if(num/mid == mid){
         		return true;
@@ -294,7 +295,7 @@ class Solution {
         }
         int left = 1, right = minLength;
         while(left <= right) {
-            int mid = (left + right )/2;
+            int mid = left + (right - left)/2;
             if(isCommonPrefix(strs, mid)) {
                 left = mid +1;//-->
             } else {
@@ -313,10 +314,5 @@ class Solution {
         return true;
     }
 }
-/*
-**********My thoughts
 
-**********Better solution
 
-**********Takeaways
-*/
