@@ -1,4 +1,4 @@
-public class ZMathQs {
+ public class ZMathQs {
 //Q1===========================================================================
     public int[] twoSum(int[] nums, int target) {
         int l = 0, r = nums.length-1;
@@ -27,12 +27,13 @@ public class ZMathQs {
         }
         return num==1;
     }
-    //
+    //23456%9=(2+3+4+5+6)%9
     public int addDigits(int num){
         if(num<10) {
             return num;
         } else if(num%9 ==0) {
-            return 9;//the question asks the sum to be single-digit-and 9 is the largest single-digit number
+            return 9;
+            //the question asks the sum to be single-digit-and 9 is the largest single-digit number
         } else {
             return num%9;   
         }   
@@ -50,32 +51,34 @@ public class ZMathQs {
         return n==1;
     }
 
+    public boolean checkPrimeNumber(int number) { 
+      if(number <= 1) { 
+         return false; 
+      } 
+      //4
 
+      for(int a = 2; a <= Math.sqrt(number); a++) { 
+         if(number % a == 0) { 
+            return false; 
+         } 
+      }
+      //2, 3
+      return true;
+    }
+    //
     public int countPrimes(int n) {
-        if(n<=1) return 0;
-        //0 1 2 3 4...
-        boolean[] notPrime = new boolean[n];
-        //boarder line
-        notPrime[0] = true;
-        notPrime[1] = true;
-
-        //suppose numbers from 2, 3  ... are all prime
-        //notPrime[2] = false;
-        //notPrime[3] = false;
-        for(int i=2; i*i<n; i++) { // 2 - n/2
-            if(!notPrime[i]) {    //2,3,5
-                for(int j=2*i; j<n; j++) {
-                    notPrime[j] = true;//4,6,10
-                }
+       // isMultipleOfPrime[i] store whether num i is dividable by a prime num < i
+        boolean[] isMultipleOfPrime = new boolean[n]; 
+        // count of prime nums so far
+        int count = 0;
+        for (int i = 2; i < n; i++) {     // start from 2
+            if (!isMultipleOfPrime[i]) {  // if i not dividable by a previous num, it's a prime
+                count++;                  // count toward total num of primes seen so far
+                for (int j=i; j<n; j=j+i) // mark all multiples of i as non-prime
+                    isMultipleOfPrime[j] = true;
             }
         }
-        int result = 0;
-        for(boolean noP: notPrime){
-            if(!noP){
-                result++;
-            }
-        }
-        return result;
+        return count;
     }
     
     
