@@ -289,7 +289,7 @@ public thirtyFour{
 	public static int[] sortScores(int[] unorderedScores, int highestPossibleScore){
 		//scores as indexes, counts as values
 		int[] scoreCounts = new int[highestPossibleScore+1];
-		//scores are natually sorted by indexes from descendently
+		//scores are natually sorted by indexes descendently
 		for(int score = highestPossibleScore; score>=0; score--){
 			int count = scoreCounts[score];
 			for(int occurence: count){
