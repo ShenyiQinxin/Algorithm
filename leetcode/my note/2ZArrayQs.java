@@ -12,7 +12,7 @@ public class ZArrayQs {
         return ways[n];
     }
 
-    /*
+    /**
     fib(0);  // => 0
     fib(1);  // => 1
     fib(2);  // => 1
