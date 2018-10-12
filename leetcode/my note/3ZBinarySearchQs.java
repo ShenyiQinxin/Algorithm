@@ -1,31 +1,31 @@
 public class ZBinarySearchQs{
     //Q1===========================================================================
-    public int[] twoSum(int[] nums, int target) {
+    public static int[] twoSum(int[] nums, int target) {
         int l = 0, r = nums.length-1;
         while(l < r) {
             int sum = nums[l] + nums[r];
-            if(sum == target){
-                return new int[]{l+1, r+1};//index stars from 1, 2, ...
-            } else if(sum > target) {
+            if(sum == target) {
+                return new int[] {l+1, r+1};//index stars from 1, 2, ...
+            } else if (sum > target) {
                 r--;
             } else {
                 l++;
+
             }
         }
-        throw new RuntimeException();
+        return null;
     }
 //===========================================================================
 	class Solution extends VersionControl {
 	    public int firstBadVersion(int n) {
-	        int l = 1, r = n;
-	        int mid = 0;
+	        int l = 1, r = n, mid = 0;
 	        //if l==r, then return 1
 	        while(l < r){
 	        	mid = l + (r-l)/2;
 	        	if(isBadVersion(mid)){
-	        		mid = r;
+	        		r = mid;
 	        	} else {
-	        		l = mid;
+	        		l = mid+1;
 	        	}
 	        	
 	        }
@@ -37,10 +37,10 @@ public class ZBinarySearchQs{
 	//
     public int search(int[] nums, int target) {
     	if(nums==null || nums.length==0) return 0;
-        int l=0, r=nums.length-1;
+        int l=0, r=nums.length-1, mid = 0;
        //when l == r, it handles [5]
         while(l <= r){
-             int mid = l + (r-l)/2;
+            mid = l + (r-l)/2;
         	if(nums[mid] == target) {
         		return mid;
         	} else if (nums[mid] > target){
@@ -56,7 +56,7 @@ public class ZBinarySearchQs{
     	if(x<=1) return x;
 
         int l=2, r=x;
-        while(l <= r){
+        while(l < r){
         	int mid = l+(r-l)/2;
         	if(x/mid==mid){
         		return mid;
@@ -66,7 +66,7 @@ public class ZBinarySearchQs{
         		l = mid+1;
         	}
         }
-        //l>r
+        //l>=r
         return r;
     }
 

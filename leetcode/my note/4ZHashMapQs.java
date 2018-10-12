@@ -2,18 +2,17 @@ public class ZHashMapQs {
 
 //Q1===========================================================================
 	public int[] twoSum(int[] nums, int target) {
-	    	Map<Integer> map = new HashMap<>();
-	    	int rest = 0;
-	    	for(int i=0; i< nums.length; i++){
-	    		rest = target - mums[i];
-
-	    		if(map.containsKey(rest)){
-	    			return new int[]{map.get(rest), i}
-	    		} else {
-	    			map.put(nums[i], i);
-	    		}
-	    	}
-	    	return new IllegalArgumentException("...");
+	    Map<Integer, Integer> map = new HashMap<>();
+        int key = 0;
+        for(int i=0; i<nums.length; i++) {//i for 2
+            key = target - nums[i];//3
+            if(map.containsKey(key)) {//
+                return new int[]{map.get(key), i};
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+        throw new IllegalArgumentException();
 	    }
 	 
 
@@ -42,42 +41,37 @@ public class ZHashMapQs {
         map.put('D',500);
         map.put('M',1000);
 
-        char[] a = s.toCharArray();
-        int result = 0;
-        int curr = 0;
-
-        for(int i=0; i<a.length-1; i++){
-        	curr = map.get(a[i]);
+        int num = 0;
+        int l = s.length();
+        for(int i=0; i<l; i++){
         	//II, VI
-        	if(curr >= map.get(a[i+1]) || i==a.length-1) {
-        		result += curr + a[i+1];
+        	if(map.get(s.charAt(i)) >= map.get(s.charAt(i+1)) 
+                || i==l-1) {
+        		num += map.get(s.charAt(i));
         	} else {//IV
-        		result -= curr;
+        		num -= map.get(s.charAt(i));
         	}
         }//for end
-        return result;
+        return num;
     }
 
 
     public boolean isValid(String s) {
-    	char[] a = s.toCharArray();
     	Map<Character, Character> map = new HashMap<>();
-    	map.put('(', ')');
-    	map.put('[',']');
+        map.put('(', ')');
+        map.put('[',']');
         map.put('{','}');
-
         Stack<Character> stack = new Stack<>();
-//( { 90 [ ]  } )
-        for(Character c : a) {
-        	if(map.containsKey(c)) {//(
-        		stack.push(c);
-        	} else if(map.values().contains(c)) {//)
-        		if(!stack.isEmpty() && map.get(stack.peek()) == c) {//has ( in stack
-        			stack.pop();
-        		} else {
-        			return false;
-        		}
-        	}
+        for(Character c: s.toCharArray()) {
+            if(map.containsKey(c)) { //'('
+                stack.push(c);
+            } else if (map.values().contains(c)) { //')'
+                if(!stack.isEmpty() && map.get(stack.peek()) == c) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            }
         }
         return stack.isEmpty();
     }//end
@@ -147,22 +141,34 @@ public class ZHashMapQs {
     	return res;
     }
 
-    //
+    //s: "cbaebabacd" p: "abc"
+    //Output:
+    //[0, 6]
     public List<Integer> findAnagrams(String s, String p) {
     	List<Integer> result = new ArrayList<>();
-    	int left = 0, right = 0, count = p.length();
-    	int[] map = new int[256];//p ascii
-    	char[] a = s.toCharArray();//s
-    	for(char c : p.toCharArray()) map[c]++; //fill in the p map
-    	while(right < s.length()) {
-    		if(map[a[right++]]-- >=1) count--;//when find the 1st match char, expand the window
-    		if(count == 0) result.add(left);//when count is consumed, the full p is found in s
-    		if(right - left == p.length() && map[a[left++]]++ >=0) count++;
-    		//when still match some of char, or window size is p length, 
-    		//then decrease the window, and count++ till p.length
-    	}
-
-    	return result;
+        int lengthSub = sub.length();
+        int position = 0, pointer = 0;
+        int[] subMap = new int[256]; //"abc"
+        char[] charS = s.toCharArray(); //"abcxabcxabc"
+        for(char c : sub.toCharArray()) {//[a , b, c]
+            subMap[c]++; 
+        }
+        //"abcxabcxabc"
+        while(pointer < s.length()) {
+            //find 'c' in the subMap
+            //find 'x'
+            if(subMap[charS[pointer++]]-- >= 1) {
+                lengthSub--;
+            }
+            if(lengthSub == 0) {
+                result.add(position);
+            }
+            //lengthSub -> length of sub
+            if(pointer - position == sub.length() && subMap[charS[position++]]++ >=0) {
+                lengthSub++;
+            }
+        }
+        return result;
     }
 
     //
@@ -185,17 +191,19 @@ public class ZHashMapQs {
     //
     public boolean isAnagram(String s, String t) {
     	if(s.length() != t.length()) {
-    		return false;
-    	}
-    	int[] counter = int[26];//26 letters
-    	for (int i=0; i<s.length(); i++) {
-    		counter[s.charAt(i)-'a']++;
-    		counter[t.charAt(i)-'a']--;
-    	}
-    	for (int c: counter) {
-    		if(c !=0) return false;
-    	}
-    	return true;
+            return false;
+        }
+        int[] counter = new int[26];
+        for(int i=0; i<s.length(); i++) {
+            counter[s.charAt(i) - 'a']++;
+            counter[t.charAt(i) - 'a']--;
+        }
+        for(int c: counter) {
+            if(c!=0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     //
