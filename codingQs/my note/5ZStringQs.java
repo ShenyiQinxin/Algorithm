@@ -43,26 +43,25 @@ public String reverseWords(String s) {
     
 //Q2==========================================================================
     
-
+//Input: S = "a1b2"
+//Output: ["a1b2", "a1B2", "A1b2", "A1B2"]
    public List<String> letterCasePermutation(String S) {
-   		List<StringBuilder> result = new ArrayList<>();
-   		result.add(new StringBuilder());
-
-   		for(char c : S.toCharArray()) {
-   			int n = result.size();//n = 0, 1, 2, ...
-   			if(Character.isLetter(c)) {
-   				for (int i=0; i<n; i++) {
-   					result.add(new StringBuilder(result.get(i)));//double
-   					result.get(i).append(Character.toLowerCase(c));//first half lowercase
-   					result.get(n+i).append(Character.toUpperCase(c));//last half uppercase
-   				}
-   			} else {
-   				for(int i=0; i<n; i++) {
-   					result.get(i).append(c);//every string is appended c
-   				}
-   			}
-   		}
-   }
+    List<String> ans = new ArrayList<>();
+    dfs(S.toCharArray(), 0, ans);
+    return ans;
+  }
+  // "a1b2"
+  private void dfs(char[] S, int i, List<String> ans) {
+    if (i == S.length) {
+      ans.add(new String(S));
+      return;
+    }    
+    dfs(S, i + 1, ans);    
+    if (!Character.isLetter(S[i])) return; //1
+    S[i] ^= 1 << 5; // 'a' -> 'A'
+    dfs(S, i + 1, ans);
+    
+  }
 
   
   public static Set<String> getPermutations(String s) {
@@ -119,6 +118,8 @@ public String reverseWords(String s) {
 	 	return result;
 	 }
 
+  //UD -> true
+   //LL -> false
   public boolean judgeCircle(String moves) {
     	int x=0, y=0;
     	for(char move: moves.toCharArray()) {

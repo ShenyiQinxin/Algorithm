@@ -1,56 +1,67 @@
  public class ZMathQs {
 
 
-    //
-    public boolean isUgly(int num) {
-        //2,3,5
-        //2, 3, 4, 5
-        for(int i=2; i<6 && num>0; i++){
-            while(num%i == 0) {
-                num /= i;
+    /* ugly numbers are positive numbers 
+    whose prime factors only include 2, 3, 5 */
+    public static boolean isUgly(int num) {
+        /* the candidate shoulbe be divisible to
+         2, 3, 4, 5 */
+        for(int i=2; i<=5 && num>0; i++) {
+            while(num % i == 0) {
+                num/=i;
             }
-            
         }
         return num==1;
     }
-    //23456%9=(2+3+4+5+6)%9
-    public int addDigits(int num){
-        if(num<10) {
+
+    /*add the digits of num iteratively untill 
+    there is only one digit left
+    23456 -> ?
+    23456%9=(2+3+4+5+6)%9
+    all numbers are categorized in '<10', 
+    '9divisible', '9not-divisible'
+    */
+    public static int addDigits(int num) {
+        if(num < 10) {
             return num;
-        } else if(num%9 ==0) {
+        } else if(num % 9 == 0) {
+            
             return 9;
-            //the question asks the sum to be single-digit-and 9 is the largest single-digit number
         } else {
-            return num%9;   
-        }   
+            return num%9;
+        }
     }
-    //
-    public boolean isPowerOfThree(int n) {
-        if (n < 1) {
+
+    /* 3^n 
+    i.e. 1, 3, 9, 27 
+    negative number is not
+    */
+    public static boolean isPowerOfThree(int n) {
+        if(n < 0) {
             return false;
         }
-
-        while(n%3==0){
+        while(n%3==0) {
             n /= 3;
         }
-
         return n==1;
     }
 
-    public boolean checkPrimeNumber(int number) { 
-      if(number <= 1) { 
-         return false; 
-      } 
-      //4
-
-      for(int a = 2; a <= Math.sqrt(number); a++) { 
-         if(number % a == 0) { 
-            return false; 
-         } 
-      }
-      //2, 3
-      return true;
+    /* prime: 2, 3, 5, 7, 11 etc
+    >=2 and not divisible */
+    public static boolean checkPrimeNumber(int num) {
+        if(num <= 1) {
+            return false;
+        }
+        //4, ...
+        for(int a=2; a<=Math.sqrt(num); a++) {
+            if(num % a == 0) {
+                return false;
+            }
+        }
+        //2, 3
+        return true;
     }
+    
     //
     public int countPrimes(int n) {
        // isMultipleOfPrime[i] store whether num i is dividable by a prime num < i
