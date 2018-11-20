@@ -1,2 +1,2 @@
-# AlgorithmJava
-Algorithm coding day by day
+# js
+run `node test.js` in `/js`
