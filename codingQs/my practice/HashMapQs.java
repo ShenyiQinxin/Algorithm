@@ -122,6 +122,92 @@ public class HashMapQs {
 		return result;
 	}
 
+	/* "abc", "bca" */
+	public static boolean isAnagram(String s, String t) {
+		if(s.length() != t.length()) {
+			return false;
+		}
+		//a table for 26 letters
+		int[] table = new int[26];
+		for(int i=0; i<s.length(); i++) {
+			table[s.charAt(i) - 'a']++;
+			table[t.charAt(i) - 'a']--;
+		}
+		for(int c : table) {
+			if(c != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/* "bcdbcd" */
+	public static int firstUniqChar(String s) {
+		int[] letters = new int[26];
+		for(int i=0; i< s.length(); i++) {
+			letters[s.charAt(i)-'a']++;
+		}
+		for(int i=0; i< s.length(); i++) {
+			if(letters[s.charAt(i)-'a']==1) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	/* Input: nums1 = [4,9,5,5], nums2 = [9,4,9,8,4]
+		Output: [9,4] */
+	public static List<Integer> intersection(int[] nums1, int[] nums2) {
+		// [4,9,5]
+		Set<Integer> set = new HashSet<>();
+		for(int num : nums1) {
+			set.add(num);
+		}
+
+		//list for the intersection [9, 4]
+		List<Integer> list = new ArrayList<>();
+		for(int num : nums2) {
+			if(set.contains(num)) {
+				list.add(num);
+				set.remove(num);
+			}
+		}
+		return list;
+	}
+
+	/* Input: nums1 = [1, 2, 2, 1], nums2 = [2, 2]
+	   Output: [2, 2]   */
+	public static List<Integer> intersect(int[] nums1, int[] nums2) {
+		Map<Integer, Integer> map = new HashMap<>();
+		//1:2, 2:2
+		for(int num : nums1) {
+			map.put(num, map.getOrDefault(num, 0)+1);
+		}
+		List<Integer> list = new ArrayList<>();
+		for(int num : nums2) {
+			if(map.containsKey(num) && map.get(num) >0) {
+				map.put(num, map.get(num)-1);
+				list.add(num);
+			}
+		}
+		return list;
+	}
+
+	/* */
+	public static int majorityElement(int[] nums) {
+		Map<Integer, Integer> map = new HashMap<>();
+		for(int num : nums) {
+			map.put(num, map.getOrDefault(num, 0)+1);
+		}
+
+		Map.Entry<Integer, Integer> majorEntry = null;
+		for(Map.Entry<Integer, Integer> entry: map.entrySet()) {
+			if(majorEntry == null || entry.getValue() > majorEntry.getValue()) {
+				
+			}
+		}
+	}
+
 
 	public static void main(String[] args){
 		int[] nums1 = new int[]{12, 28, 46, 32, 50};
@@ -136,11 +222,17 @@ public class HashMapQs {
 		// 	System.out.print(i + " ");
 		// }
 		
-		int s = "cbaebabacd";
-		int p = "abc";
-		System.out.println(findAnagrams(s, p));
-		System.out.println();
-		System.out.println();
+		String s = "cbaebabacd";
+		String p = "abcbca";
+		String t = "bca";
+		//System.out.println(findAnagrams(s, p));
+		//System.out.println(isAnagram(t, p));
+
+		//System.out.println(firstUniqChar(p));
+		int[] a1 = new int[]{4,9,4,5};
+		int[] a2 = new int[]{9,4,9,8,4};
+		//System.out.println(intersection(a1, a2));
+		System.out.println(intersect(a1,a2));
 		System.out.println();
 	}
 }
