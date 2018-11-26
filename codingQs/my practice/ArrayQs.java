@@ -112,19 +112,45 @@ public class ArrayQs {
 		return nums;
 	}
 
-	
+	/* Input: [1,2,3,4,5,6,7] and k = 3
+	   Output: [5,6,7,1,2,3,4] */
+	public static int[] rotate(int[] nums, int k) {
+		int n = nums.length;
+		k %= n;
+
+		//[7654321]
+		reverse(nums, 0, n-1);
+		//[567 4321]
+		reverse(nums, 0, k-1);
+		//[567 1234]
+		reverse(nums, k, n-1);
+		return nums;
+	}
+
+	private static void reverse(int[] nums, int l, int r){
+		while(l < r) {
+			int temp = nums[l];
+			nums[l] = nums[r];
+			nums[r] = temp;
+			l++;
+			r--;
+		}
+	}
 
 
 
 
 	public static void main(String[] args) {
-		int[] nums = new int[]{1, 0, 3, 0,4,4};
+		int[] nums = new int[]{1, 2, 3, 4,5,6,7};
 		//System.out.println(climbStairs(climbStairs(4)));
 		//System.out.println(fib(4));
 		//System.out.println(fibRecursive(4));
 		//System.out.println(removeElement(nums, 4));
 		//System.out.println(removeDuplicates(nums));
-		for(int i: moveZeroes(nums)) {
+		// for(int i: moveZeroes(nums)) {
+		// 	System.out.print(i+" ");
+		// }
+		for(int i: rotate(nums, 3)) {
 			System.out.print(i+" ");
 		}
 		System.out.println();
