@@ -59,7 +59,6 @@ public class ZArrayQs {
         int j = 0;
         for(int curr = 1; curr<nums.length; i++){
             if(nums[j] != nums[curr]) {
-                
                 nums[j] =nums[curr];
                 //update/move forward the last num
                 j++;
