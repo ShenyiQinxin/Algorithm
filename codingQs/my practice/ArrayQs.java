@@ -66,8 +66,10 @@ public class ArrayQs {
 
 	/* 
 	remove all instances of that value in-place and return the new length.
+	[1,2,3,4,4]  4
 	*/
 	public static int removeElement(int[] nums, int val) {
+		if(nums.length == 0) return 0;
 		int j=0;
 		for(int i=0; i<nums.length; i++) {
 			if(nums[i] !=val) {
@@ -78,9 +80,59 @@ public class ArrayQs {
 		return j;
 	}
 
+	/* Given a sorted array nums, remove the duplicates in-place 
+	such that each element appear only once 
+	and return the new length */
+	public static int removeDuplicates(int[] nums) {
+		if(nums.length == 0) return 0;
+		int j=0;
+		for(int i=1; i<nums.length; i++) {
+			if(nums[j] != nums[i]) {
+				j++;
+				nums[j] = nums[i];
+			}
+		}
+		return j+1;
+	}
+
+	/* Input: [0,1,0,3,12]
+	   Output: [1,3,12,0,0]
+	*/
+	public static int[] moveZeroes(int[] nums) {
+		int j=0;
+		for(int i=0; i<nums.length; i++) {
+			if(nums[i] != 0) {
+				nums[j] = nums[i];
+				j++;
+			}
+		}
+		for(int i=j; i<nums.length; i++) {
+			nums[i]=0;
+		}
+		return nums;
+	}
+
+	
+
+
+
 
 	public static void main(String[] args) {
-		System.out.println(climbStairs(climbStairs(4)));
-		System.out.println(fib());
+		int[] nums = new int[]{1, 0, 3, 0,4,4};
+		//System.out.println(climbStairs(climbStairs(4)));
+		//System.out.println(fib(4));
+		//System.out.println(fibRecursive(4));
+		//System.out.println(removeElement(nums, 4));
+		//System.out.println(removeDuplicates(nums));
+		for(int i: moveZeroes(nums)) {
+			System.out.print(i+" ");
+		}
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+
+		
 	}
 }
