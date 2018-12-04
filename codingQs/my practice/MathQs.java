@@ -199,15 +199,6 @@ public class MathQs2 {
 		//System.out.println(canWinWin(4));
 		int[] nums = new int[]{0,1, 2, 3, 5};
 		System.out.println(missingNumber(nums));
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
+		
 	}
 }
