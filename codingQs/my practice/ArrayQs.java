@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class ArrayQs {
 
 	/*
@@ -137,11 +139,122 @@ public class ArrayQs {
 		}
 	}
 
+	/* 123+1 
+		129+1 
+	*/
+	public static int[] plusOne(int[] digits) {
+		int length = digits.length;
+		for(int i=digits.length-1; i>=0; i--) {
+			if(digits[i] < 9) {
+				digits[i]++;
+				return digits;//if there is no carry-over
+			}
+			//if digits[i]=9
+			digits[i]=0;
+		}
+		//if there is a carry-over
+		int[] carry = new int[length+1];
+		carry[0] = 1;
+		return carry;
+	}
 
+	/* 4 = min(1, 2) + min(3, 4) */
+    public static int arrayPairSum(int[] nums) {
+    	Arrays.sort(nums);
+    	int sum = 0;
+    	for(int i=0; i<nums.length; i+=2) {
+    		sum += nums[i];
+    	}
+    	return sum;
+    }
+
+    /* 
+	[[0,1,0,0],
+	 [1,1,1,0],
+	 [0,1,0,0],
+	 [1,1,0,0]]
+
+	 Answer: 16
+Explanation: The perimeter is the 16 yellow stripes in the image
+    */
+    public int islandPerimeter(int[][] grid) {
+    	int islands = 0, neighbours = 0;
+    	for(int i=0; i<grid.length; i++) {
+    		for(int j=0; j<grid[i].length; j++) {
+    			if(grid[i][j] == 1) {
+    				islands++;
+    				if(i<grid.length-1 && grid[i+1][j] == 1) neighbours++;
+    				if(j<grid[i].length-1 && grid[i][j+1] == 1) neighbours++;
+    			}
+    		}
+    	}
+    	return islands*4 - neighbours*2;
+    }
+
+    /* 
+	Input:
+	nums1 = [1,2,3,0,0,0], m = 3
+	nums2 = [2,5,6],       n = 3
+
+	Output: [1,2,2,3,5,6]
+    */
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+    	int merged = m+n-1;
+        int first = m-1;
+        int second = n-1;
+        while(merged >=0){
+            if(first < 0){
+               nums1[merged--] = nums2[second--];
+               continue;
+            }
+            if(second < 0){
+                break;
+            }
+            if(nums1[first] > nums2[second]){
+                nums1[merged--] =  nums1[first--];
+            } else {
+                nums1[merged--] = nums2[second--];
+            }
+            System.out.println(nums1[merged]);
+        }
+    }
+
+    /* 1a4b67b8a */
+	public static boolean isPalindrome(String s0) {
+		String s = s0.toLowerCase();
+		if(s.length() ==0 || s == null) {
+			return true;
+		}
+		int l=0, r=s0.length()-1;
+		while(l<r) {
+			if(!isvalid(s.charAt(l))) {
+				l++;
+				continue;
+			}
+			if(!isvalid(s.charAt(r))) {
+				r--;
+				continue;
+			}
+			if(s.charAt(l) != s.charAt(r)) {
+				return false;
+			}
+			l++;
+			r--;
+		}
+		return true;
+	}
+	private static boolean isvalid(char c) {
+        if(c>='0'&&c<='9' || c>='a'&&c<='z' || c>='A' && c<='Z') {
+            return true;
+        }
+        return false;
+    }
 
 
 	public static void main(String[] args) {
 		int[] nums = new int[]{1, 2, 3, 4,5,6,7};
+		int[] nums1 = new int[]{10};
+		int[] nums2 = new int[]{4,5,60};
 		//System.out.println(climbStairs(climbStairs(4)));
 		//System.out.println(fib(4));
 		//System.out.println(fibRecursive(4));
@@ -151,12 +264,11 @@ public class ArrayQs {
 		// 	System.out.print(i+" ");
 		// }
 		for(int i: rotate(nums, 3)) {
-			System.out.print(i+" ");
+			//System.out.print(i+" ");
 		}
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
+		//System.out.println(plusOne(nums));
+		//System.out.println(arrayPairSum(nums));		
+		//System.out.println(isPalindrome("1a4b67b8a"));
 		System.out.println();
 
 		
