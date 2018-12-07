@@ -32,7 +32,8 @@ public class ZLinkedListQs {
         if(head == null || head.next == null) return true;
         
         ListNode middle = middleNode(head); //middle node
-        ListNode rNode = reverseNode(middle);//the right node to the middle, after reverse the right half
+        //the right node to the middle, after reverse the right half
+        ListNode rNode = reverseNode(middle);
         
         while(rNode!=null){
             if(head.val != rNode.val){

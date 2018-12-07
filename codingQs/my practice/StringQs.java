@@ -40,8 +40,12 @@ public class StringQs {
 		return arr;
 	}
 
-public static List<String> letterCasePermutation(String S) {
-}
+	/* Input: S = "a1b2" 
+		Output: ["a1b2", "a1B2", "A1b2", "A1B2"]
+	*/
+	public static List<String> letterCasePermutation(String S) {
+		
+	}
 
 
 
