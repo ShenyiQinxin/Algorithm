@@ -20,7 +20,7 @@ public class ArrayQs {
 	1. 1 step + 1 step + 1 step
 	2. 1 step + 2 steps
 	3. 2 steps + 1 step 
-	ways[3]=ways[1]+ways[1];
+	ways[3]=ways[2]+ways[1];
 	
 	when adding one step, the ways to achieve it is adding 1 step on top of each way from before.
 	*/
@@ -77,6 +77,7 @@ public class ArrayQs {
 			if(nums[i] !=val) {
 				nums[j] = nums[i];
 				j++; //j wont ++ , when found the to-removed one
+							
 			}
 		}
 		return j;
