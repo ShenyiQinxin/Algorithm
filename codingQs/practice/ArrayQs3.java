@@ -59,13 +59,29 @@ public class ArrayQs2 {
 	}
 
 	public static int removeDuplicates(int[] nums) {
-		if(nums.length == 0) return 0;
+		if(nums.length == 0) {
+			return 0;
+		}
+		int j = 0;
+		for(int i=1; i<nums.length; i++) {
+			if(nums[j] != nums[i]) {
+				j++;
+				nums[j] = nums[i];
+			}
+		}
 		return j+1;
 	}
 
+	//21-12-1
 	public static int[] moveZeroes(int[] nums) {
-		
-		return nums;
+		int j = 0;
+		for(int i=0; i<nums.length; i++) {
+			if(nums[i] != 0) {
+				nums[j] = nums[i];
+				j++;
+			}
+		}
+
 	}
 
 	public static int[] rotate(int[] nums, int k) {

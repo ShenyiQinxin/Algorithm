@@ -85,21 +85,27 @@ public class ArrayQs {
 
 	/* Given a sorted array nums, remove the duplicates in-place 
 	such that each element appear only once 
-	and return the new length */
-	public static int removeDuplicates(int[] nums) {
-		if(nums.length == 0) return 0;
-		int j=0;
-		for(int i=1; i<nums.length; i++) {
-			if(nums[j] != nums[i]) {
-				j++;
-				nums[j] = nums[i];
-			}
-		}
-		return j+1;
-	}
+	and return the new length 
+	[1,1,2,2,3,4,5]
+	j records the index of the current dup
+	*/
+	 //remove dups in sorted nums[]
+    public int removeDuplicates(int[] nums) {
+        if(nums.length ==0) return 0;
+        int j = 0;
+        for(int curr = 1; curr<nums.length; i++){
+            if(nums[j] != nums[curr]) {
+                //update/move forward the last num
+    			last++;
+    			nums[last] =nums[curr];
+            }
+        }
+        return j+1;
+    }
 
 	/* Input: [0,1,0,3,12]
 	   Output: [1,3,12,0,0]
+	   j record the length of non-zeroes
 	*/
 	public static int[] moveZeroes(int[] nums) {
 		int j=0;
