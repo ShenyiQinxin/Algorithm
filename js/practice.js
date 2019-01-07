@@ -44,6 +44,22 @@ function buildCharMap(str) {
 
 //console.log(anagrams2('strA', 'strv'));
 
+
+/**
+palindrome
+*/
+function palindrome1(str) {
+	return str.split('').every((char, i) => {
+		return char === str[str.length-i-1];
+	});
+}
+
+function palindrome2(str) {
+	const reversed = str.split('').reverse().join('');
+	return str === reversed;
+
+}
+
 /**
 bst
 */
@@ -253,37 +269,265 @@ class LinkedList {
 			return null;
 		}
 		let node = this.head;
+		while(node.next) {
+			node = node.next;
+		}
+		return node;
+	}
+
+	insertLast(data) {
+		const last = this.getLast();
+		if(last) {
+			last.next = new Node(data);
+			return last.next;
+		} else {
+			this.head = new Node(data);
+			return this.head;
+		}
+	}
+
+	forEach(fn) {
+		if(!this.head) {
+			return null;
+		}
+		let node = this.head;
+		while(node) {
+			fn(node);
+			node = node.next;
+		}
 	}
 
 }
-//circular
 
+/**
+midpoint
+*/
+function midpoint(list) {
+	let slow = list.getFirst();
+	let fast = list.getFirst();
+	while(fast.next && fast.next.next) {
+		slow = slow.next;
+		fast = fast.next.next;
+	}
+	return slow;
+}
 
+/**circular
+*/
+function circular(list) {
+	let slow = list.getFirst();
+	let fast = list.getFirst();
+
+	while(fast.next && fast.next.next) {
+		slow = slow.next;
+		fast = fast.next.next;
+
+		if(slow === fast) {
+			return true;
+		}
+	}
+	return false;
+}
 
 //events
 
 //fib
+function memorize(fn) {
+	const cache = {};
+	return function(...args) {
+		if(cache[args]) {
+			return cache[args];
+		}
+		const result = fn.apply(this, args);
+		cache[args] = result;
+		return result;
+	};
+}
 
+function slowFib(n) {
+	if(n<2) {
+		return n;
+	}
+	return fib(n-1)+fib(n-2);
+}
+
+const fib = memorize(slowFib);
+
+function fib2(n) {
+	const result = [0,1];
+	for(let i=2; i<=n; i++) {
+		const a = result[i-1];
+		const b = result[i-2];
+		result.push(a+b);
+	}
+	return result[n];
+}
+
+console.log();
 //fizzbuzz
 
 //fromlast
-
+function fromLast(list, n) {
+	let slow = list.getFirst();
+	let fast = list.getFirst();
+	while(n>0) {
+		fast = fast.next;
+		n--;
+	}
+	while(fast.next) {
+		slow = slow.next;
+		fast = fast.next;
+	}
+	return slow;
+}
 //levelwidth
+class TreeNode {
+	constructor(data) {
+		this.data = data;
+		this.children = [];
+	}
 
-//linkedlist
+	add(data) {
+		this.children.push(new Node(data));
+	}
+}
+
+function levelWidth(root) {
+	const arr = [root, 's'];
+	const counters = [0];
+	while(arr.length >1){
+		const node = arr.shift();
+		if(node === 's'){
+			counters.push(0);
+			arr.push('s');
+		} else {
+			arr.push(...node.children);
+			counters[counters.length-1]++;
+		}
+	}
+	return counters;
+}
 
 
 //matrix
+function matrix(n) {
+	const results = [];
+	for(let i=0; i<n; i++) {
+		results.push([]);
+	}
+	let counter =1;
+	let startColumn = 0;
+	let endColumn = n-1;
+	let startRow = 0;
+	let endRow = n-1;
+	while(startColumn <= endColumn && startRow <= endRow) {
+		for(let i= startColumn; i<= endColumn; i++) {
+			results[startRow][i] = counter;
+			counter++;
+		}
+		startRow++;
+
+		for(let i= startColumn; i<= endColumn; i++) {
+			results[i][endColumn] = counter;
+			counter++;
+		}
+		endColumn--;
+
+		for(let i= endColumn; i>=startColumn; i--) {
+			results[endRow][i] = counter;
+			counter++;
+		}
+		endRow--;
+
+		for(let i=endRow; i>=startRow; i--) {
+			results[i][startColumn] = counter;
+			counter++;
+		}
+		startColumn++;
+
+	}
+	return results;
+}
+
+console.log(matrix(3));
 
 //maxchar
+function maxChar(str) {
+	const charMap = {};
+	let max = 0;
+	let maxChar = '';
+	for(let char of str) {
+		if(charMap[char]) {
+			charMap[char]++;
+		} else {
+			charMap[char] = 1;
+		}
+	}
 
-//midpoint
-
-//palindrome
+	for(let char in charMap) {
+		if(charMap[char]>max){
+			max = charMap[char];
+			maxChar = char;
+		}
+	}
+	return maxChar;
+}
+console.log(maxChar("cabcaabc"));
 
 //pyramid
+function pyramid(n) {
+	const midpoint = Math.floor((2*n-1)/2);
+	for(let row=0; row<n; row++) {
+		let level = '';
+		for(let column = 0; column<2*n-1; column++) {
+			if(column>=midpoint-row && column<=midpoint+row) {
+				level += '#';
+			} else {
+				level += ' ';
+			}
+		}
+		console.log(level);
+	}
+}
 
-//qfroms
+pyramid(3);
+
+/**
+stack
+*/
+class Stack{
+	constructor() {
+		this.data = [];
+	}
+
+	push(record) {
+		this.data.push(record);
+	}
+
+	pop(){
+		return this.data.pop();
+	}
+
+	peek(){
+		return this.data[this.data.length-1];
+	}
+}
+
+class Queue{
+	constructor() {
+		this.first = new Stack();
+		this.second = new Stack();
+	}
+
+	add(record) {
+		this.first.push(record);
+	}
+}
+
+
+/**
+qfroms
+*/
 
 //queue
 
