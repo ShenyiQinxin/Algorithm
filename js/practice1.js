@@ -7,14 +7,12 @@ anagrams1
 ex: anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 */
 function anagrams1(strA, strB) {
-	return cleanStr(strA) === cleanStr(strB);
+	cleanStr(strA) === cleanStr(strB);
 }
 function cleanStr(str) {
-	//match words globally
 	return str.replace(/[^\w]/g,'').toLowerCase().split('').sort().join('');
 }
 
-//console.log(anagrams1('strA', 'strA'));
 
 /**
 anagrams2
@@ -22,13 +20,11 @@ anagrams2
 function anagrams2(strA, strB) {
 	const aCharMap = buildCharMap(strA);
 	const bCharMap = buildCharMap(strB);
-
-	if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+	if(Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
 		return false;
 	}
-
-	for(let char in aCharMap) {	
-		if(aCharMap[char] !== bCharMap[char]) {
+	for(let char in aCharMap) {
+		if(aCharMap[char] !== bCharMap[char]){
 			return false;
 		}
 	}
@@ -36,14 +32,11 @@ function anagrams2(strA, strB) {
 }
 function buildCharMap(str) {
 	const charMap = {};
-	for(let char of str.replace(/[^\w]/g,'').toLowerCase()){
+	for(let char of str.replace(//g, '').toLowerCase()) {
 		charMap[char] = charMap[char]+1 || 1;
 	}
 	return charMap;
 }
-
-//console.log(anagrams2('strA', 'strv'));
-
 
 /**
 palindrome
@@ -70,10 +63,9 @@ function vowels1(str) {
 function vowels2(str) {
 	let count = 0;
 	const checker = ['a', 'e', 'i', 'o', 'u'];
-
 	for(let char of str.toLowerCase()) {
 		if(checker.includes(char)) {
-			count++;
+			count ++;
 		}
 	}
 	return count;
@@ -83,28 +75,25 @@ function vowels2(str) {
 capitalize
 */
 function capitalize1(str) {
-	let result  = str[0].toUpperCase();
+	let result = str[0].toUpperCase();
 	for(let i=1; i<str.length; i++) {
-		if(str[i-1] === ' '){
+		if(str[i-1] === ' ') {
 			result += str[i].toUpperCase();
 		} else {
 			result += str[i];
 		}
 	}
 	return result;
-	console.log(result);
 }
 
-//console.log(capitalize('abc abc abc'));
 
 function capitalize2(str) {
 	const words = [];
-	for(let w of str.split(' ')){
+	for(let w of str.split(' ')) {
 		words.push(w[0].toUpperCase()+w.slice(1));
 	}
-	return words.join(' ')
+	return words.join(' ');
 }
-//console.log(capitalize2('abc abc abc'));
 
 /**
 chunk
@@ -118,7 +107,6 @@ function chunk(array, size) {
 	}
 	return chunked;
 }
-//console.log(chunk([1,2,3,4],2));
 
 /**
 fizzbuzz
@@ -127,7 +115,7 @@ function fizzBuzz(n) {
 	for(let i=1; i<=n; i++) {
 		if(i%3 === 0 && i%5 === 0) {
 			console.log('fizzbuzz');
-		} else if(i%3 === 0) {
+		} else if (i%3 === 0) {
 			console.log('fizz');
 		} else if (i%5 === 0) {
 			console.log('buzz');
@@ -160,14 +148,12 @@ class LinkedList {
 	}
 
 	size() {
-		let counter = 0;
+		this.counter = 0;
 		let node = this.head;
-
 		while(node) {
 			counter++;
 			node = node.next;
 		}
-
 		return counter;
 	}
 
@@ -184,65 +170,6 @@ class LinkedList {
 			return;
 		}
 		this.head = this.head.next;
-	}
-
-	getAt(index) {
-		if(!this.head) {
-			return null;
-		}
-		let counter = 0;
-		let node = this.head;
-		while(node) {
-			if(counter === index) {
-				return node;
-			}
-			node = node.next;
-			counter++;
-		}
-		return null;
-	}
-
-	insertAt(data, index) {
-		if(!this.head) { //empty
-			this.head = new Node(data);
-			return;
-		}
-		if(index === 0) { //insert at the front of the head
-			this.head = new Node(data, this.head);
-			return;
-		}
-		let counter = 1;
-		let previous  = this.head; //1st
-		let node = this.head.next; //2nd
-		while(node) {
-			if(counter === index) { //insert between the head and next of the head
-				previous.next = new Node(data, node);
-				return;
-			}
-			previous = node;
-			node = node.next;
-			counter++;
-		}
-		previous.next = new Node(data, node); //insert at the next of the head as the end of the list
-	}
-
-	removeAt(index) {
-		if(!this.head) {
-			return;
-		}
-		let counter = 0;
-		let node = this.head;
-		while(node) {
-			if(counter === index-1) {
-				if(node.next) {
-					return (node.next = node.next.next);
-				} else {
-					return (node.next = null);
-				}
-			}
-			node = node.next;
-			counter++;
-		}
 	}
 
 	getLast() {
@@ -268,35 +195,31 @@ class LinkedList {
 	}
 
 	removeLast() {
-		if(!this.head) {//empty
+		if(!this.head) {
 			return;
 		}
-		if(!this.head.next){//only head
+		if(!this.head.next) {
 			this.head = null;
 			return;
 		}
-		let pre = this.head; 
-		let curr = this.head.next; // head, curr
-		while(curr.next){ //head, curr, curr.next
+		let pre = this.head;
+		let curr = this.head.next;
+		while(curr.next) {
 			pre = curr;
 			curr = curr.next;
 		}
-		pre.next = null; //head, curr=null
+		pre.next = null;
 	}
 
-	
+	getAt(index) {
+	}
 
-	
+	removeAt(index) {}
+
+	insertAt(data, index) {
 
 	forEach(fn) {
-		if(!this.head) {
-			return null;
-		}
-		let node = this.head;
-		while(node) {
-			fn(node);
-			node = node.next;
-		}
+		
 	}
 
 }
