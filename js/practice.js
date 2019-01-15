@@ -304,6 +304,7 @@ function fib2(n) {
 	return result[n];
 }
 
+/**************************************/
 /**
 1
 LinkedList
@@ -731,7 +732,7 @@ function weave(sourceOne, sourceTwo) {
 	return q;
 }
 
-
+/*********************************/
 /**
 1
 sorting
