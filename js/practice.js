@@ -138,6 +138,169 @@ function fizzBuzz(n) {
 }
 
 /**
+reverseint
+*/
+function reverseInt(n) {
+	const reversed = n.toString().split('').reverse().join('');
+	return parseInt(reversed)*Math.sign(n);
+}
+
+/**
+reversestring
+*/
+function reverse1(str) {
+	return str.split('').reverse().join('');
+}
+
+function reverse2(str) {
+	return str.split('').reduce((acc, currentChar) => currentChar+acc, '');
+}
+
+function reverse3(str) {
+	let reversed = '';
+	for(let c of str) {
+		reversed = c + reversed;
+	}
+	return reversed;
+}
+
+/**
+matrix
+*/
+function matrix(n) {
+	const results = [];
+	for(let i=0; i<n; i++) {
+		results.push([]);
+	}
+	let counter =1;
+	let startColumn = 0;
+	let endColumn = n-1;
+	let startRow = 0;
+	let endRow = n-1;
+	while(startColumn <= endColumn && startRow <= endRow) {
+		for(let i= startColumn; i<= endColumn; i++) {
+			results[startRow][i] = counter;
+			counter++;
+		}
+		startRow++;
+
+		for(let i= startColumn; i<= endColumn; i++) {
+			results[i][endColumn] = counter;
+			counter++;
+		}
+		endColumn--;
+
+		for(let i= endColumn; i>=startColumn; i--) {
+			results[endRow][i] = counter;
+			counter++;
+		}
+		endRow--;
+
+		for(let i=endRow; i>=startRow; i--) {
+			results[i][startColumn] = counter;
+			counter++;
+		}
+		startColumn++;
+
+	}
+	return results;
+}
+
+console.log(matrix(3));
+
+//maxchar
+function maxChar(str) {
+	const charMap = {};
+	let max = 0;
+	let maxChar = '';
+	for(let char of str) {
+		if(charMap[char]) {
+			charMap[char]++;
+		} else {
+			charMap[char] = 1;
+		}
+	}
+
+	for(let char in charMap) {
+		if(charMap[char]>max){
+			max = charMap[char];
+			maxChar = char;
+		}
+	}
+	return maxChar;
+}
+console.log(maxChar("cabcaabc"));
+
+//pyramid
+function pyramid(n) {
+	const midpoint = Math.floor((2*n-1)/2);
+	for(let row=0; row<n; row++) {
+		let level = '';
+		for(let column = 0; column<2*n-1; column++) {
+			if(column>=midpoint-row && column<=midpoint+row) {
+				level += '#';
+			} else {
+				level += ' ';
+			}
+		}
+		console.log(level);
+	}
+}
+
+pyramid(3);
+
+/**
+steps
+*/
+function steps(n) {
+	for(let row = 0; row <n; row++) {
+		let stair = '';
+		for(let column=0; column<n; column++) {
+			if(column <= row) {
+				stair += '#';
+			} else {
+				stair += ' ';
+			}
+		}
+		console.log(stair);
+	}
+}
+
+/**
+fib
+*/
+function memorize(fn) {
+	const cache = {};
+	return function(...args) {
+		if(cache[args]) {
+			return cache[args];
+		}
+		const result = fn.apply(this, args);
+		cache[args] = result;
+		return result;
+	};
+}
+
+function slowFib(n) {
+	if(n<2) {
+		return n;
+	}
+	return fib(n-1)+fib(n-2);
+}
+
+const fib = memorize(slowFib);
+
+function fib2(n) {
+	const result = [0,1];
+	for(let i=2; i<=n; i++) {
+		const a = result[i-1];
+		const b = result[i-2];
+		result.push(a+b);
+	}
+	return result[n];
+}
+
+/**
 LinkedList
 */
 class LinkedListNode {
@@ -169,21 +332,6 @@ class LinkedList {
 		}
 
 		return counter;
-	}
-
-	getFirst() {
-		return this.head;
-	}
-
-	insertFirst(data) {
-		this.head = new Node(data, this.getFirst());
-	}
-
-	removeFirst() {
-		if(!this.head) {
-			return;
-		}
-		this.head = this.head.next;
 	}
 
 	getAt(index) {
@@ -226,6 +374,30 @@ class LinkedList {
 		previous.next = new Node(data, node); //insert at the next of the head as the end of the list
 	}
 
+	removeFirst() {
+		if(!this.head) {
+			return;
+		}
+		this.head = this.head.next;
+	}
+
+	removeLast() {
+		if(!this.head) {//empty
+			return;
+		}
+		if(!this.head.next){//only head
+			this.head = null;
+			return;
+		}
+		let pre = this.head; 
+		let curr = this.head.next; // head, curr
+		while(curr.next){ //head, curr, curr.next
+			pre = curr;
+			curr = curr.next;
+		}
+		pre.next = null; //head, curr=null
+	}
+
 	removeAt(index) {
 		if(!this.head) {
 			return;
@@ -243,6 +415,14 @@ class LinkedList {
 			node = node.next;
 			counter++;
 		}
+	}
+
+	getFirst() {
+		return this.head;
+	}
+
+	insertFirst(data) {
+		this.head = new Node(data, this.getFirst());
 	}
 
 	getLast() {
@@ -266,27 +446,6 @@ class LinkedList {
 			return this.head;
 		}
 	}
-
-	removeLast() {
-		if(!this.head) {//empty
-			return;
-		}
-		if(!this.head.next){//only head
-			this.head = null;
-			return;
-		}
-		let pre = this.head; 
-		let curr = this.head.next; // head, curr
-		while(curr.next){ //head, curr, curr.next
-			pre = curr;
-			curr = curr.next;
-		}
-		pre.next = null; //head, curr=null
-	}
-
-	
-
-	
 
 	forEach(fn) {
 		if(!this.head) {
@@ -314,7 +473,8 @@ function midpoint(list) {
 	return slow;
 }
 
-/**circular
+/**
+circular
 */
 function circular(list) {
 	let slow = list.getFirst();
@@ -348,43 +508,6 @@ function fromLast(list, n) {
 	return slow;
 }
 
-/**
-fib
-*/
-function memorize(fn) {
-	const cache = {};
-	return function(...args) {
-		if(cache[args]) {
-			return cache[args];
-		}
-		const result = fn.apply(this, args);
-		cache[args] = result;
-		return result;
-	};
-}
-
-function slowFib(n) {
-	if(n<2) {
-		return n;
-	}
-	return fib(n-1)+fib(n-2);
-}
-
-const fib = memorize(slowFib);
-
-function fib2(n) {
-	const result = [0,1];
-	for(let i=2; i<=n; i++) {
-		const a = result[i-1];
-		const b = result[i-2];
-		result.push(a+b);
-	}
-	return result[n];
-}
-
-//console.log();
-
-//fizzbuzz
 
 /**
 bst
@@ -502,108 +625,6 @@ class Tree {
 
 
 /**
-matrix
-*/
-function matrix(n) {
-	const results = [];
-	for(let i=0; i<n; i++) {
-		results.push([]);
-	}
-	let counter =1;
-	let startColumn = 0;
-	let endColumn = n-1;
-	let startRow = 0;
-	let endRow = n-1;
-	while(startColumn <= endColumn && startRow <= endRow) {
-		for(let i= startColumn; i<= endColumn; i++) {
-			results[startRow][i] = counter;
-			counter++;
-		}
-		startRow++;
-
-		for(let i= startColumn; i<= endColumn; i++) {
-			results[i][endColumn] = counter;
-			counter++;
-		}
-		endColumn--;
-
-		for(let i= endColumn; i>=startColumn; i--) {
-			results[endRow][i] = counter;
-			counter++;
-		}
-		endRow--;
-
-		for(let i=endRow; i>=startRow; i--) {
-			results[i][startColumn] = counter;
-			counter++;
-		}
-		startColumn++;
-
-	}
-	return results;
-}
-
-console.log(matrix(3));
-
-//maxchar
-function maxChar(str) {
-	const charMap = {};
-	let max = 0;
-	let maxChar = '';
-	for(let char of str) {
-		if(charMap[char]) {
-			charMap[char]++;
-		} else {
-			charMap[char] = 1;
-		}
-	}
-
-	for(let char in charMap) {
-		if(charMap[char]>max){
-			max = charMap[char];
-			maxChar = char;
-		}
-	}
-	return maxChar;
-}
-console.log(maxChar("cabcaabc"));
-
-//pyramid
-function pyramid(n) {
-	const midpoint = Math.floor((2*n-1)/2);
-	for(let row=0; row<n; row++) {
-		let level = '';
-		for(let column = 0; column<2*n-1; column++) {
-			if(column>=midpoint-row && column<=midpoint+row) {
-				level += '#';
-			} else {
-				level += ' ';
-			}
-		}
-		console.log(level);
-	}
-}
-
-pyramid(3);
-
-/**
-steps
-*/
-function steps(n) {
-	for(let row = 0; row <n; row++) {
-		let stair = '';
-		for(let column=0; column<n; column++) {
-			if(column <= row) {
-				stair += '#';
-			} else {
-				stair += ' ';
-			}
-		}
-		console.log(stair);
-	}
-}
-
-/**
 stack
 */
 class Stack{
@@ -692,32 +713,7 @@ function weave(sourceOne, sourceTwo) {
 	return q;
 }
 
-/**
-reverseint
-*/
-function reverseInt(n) {
-	const reversed = n.toString().split('').reverse().join('');
-	return parseInt(reversed)*Math.sign(n);
-}
 
-/**
-reversestring
-*/
-function reverse1(str) {
-	return str.split('').reverse().join('');
-}
-
-function reverse2(str) {
-	return str.split('').reduce((rev, char) => char+rev, '');
-}
-
-function reverse3(str) {
-	let reversed = '';
-	for(let c of str) {
-		reversed = c + reversed;
-	}
-	return reversed;
-}
 /**
 sorting
 */
