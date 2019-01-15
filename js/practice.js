@@ -15,8 +15,6 @@ function cleanStr(str) {
 	return str.replace(/[^\w]/g,'').toLowerCase().split('').sort().join('');
 }
 
-//console.log(anagrams1('strA', 'strA'));
-
 function anagrams2(strA, strB) {
 	const aCharMap = buildCharMap(strA);
 	const bCharMap = buildCharMap(strB);
@@ -44,8 +42,6 @@ function buildCharMap(str) {
 	}
 	return charMap;
 }
-
-//console.log(anagrams2('strA', 'strv'));
 
 
 /**
@@ -98,10 +94,7 @@ function capitalize1(str) {
 		}
 	}
 	return result;
-	console.log(result);
 }
-
-//console.log(capitalize('abc abc abc'));
 
 function capitalize2(str) {
 	const words = [];
@@ -110,7 +103,6 @@ function capitalize2(str) {
 	}
 	return words.join(' ')
 }
-//console.log(capitalize2('abc abc abc'));
 
 /**
 6
@@ -125,7 +117,6 @@ function chunk(array, size) {
 	}
 	return chunked;
 }
-//console.log(chunk([1,2,3,4],2));
 
 /**
 7
@@ -217,8 +208,6 @@ function matrix(n) {
 	return results;
 }
 
-console.log(matrix(3));
-
 /**
 11
 maxchar
@@ -243,7 +232,6 @@ function maxChar(str) {
 	}
 	return maxChar;
 }
-//console.log(maxChar("cabcaabc"));
 
 /**
 12
@@ -264,8 +252,6 @@ function pyramid(n) {
 	}
 }
 
-//pyramid(3);
-
 /**
 13
 steps
@@ -280,7 +266,6 @@ function steps(n) {
 				stair += ' ';
 			}
 		}
-		console.log(stair);
 	}
 }
 
