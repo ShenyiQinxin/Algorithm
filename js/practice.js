@@ -3,6 +3,7 @@
 
 
 /**
+1
 anagrams1
 ex: anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 */
@@ -16,9 +17,6 @@ function cleanStr(str) {
 
 //console.log(anagrams1('strA', 'strA'));
 
-/**
-anagrams2
-*/
 function anagrams2(strA, strB) {
 	const aCharMap = buildCharMap(strA);
 	const bCharMap = buildCharMap(strB);
@@ -34,6 +32,11 @@ function anagrams2(strA, strB) {
 	}
 	return true;
 }
+
+/**
+2
+buildCharMap
+*/
 function buildCharMap(str) {
 	const charMap = {};
 	for(let char of str.replace(/[^\w]/g,'').toLowerCase()){
@@ -46,6 +49,7 @@ function buildCharMap(str) {
 
 
 /**
+3
 palindrome
 */
 function palindrome1(str) {
@@ -60,6 +64,7 @@ function palindrome2(str) {
 }
 
 /**
+4
 vowels
 */
 function vowels1(str) {
@@ -80,6 +85,7 @@ function vowels2(str) {
 }
 
 /**
+5
 capitalize
 */
 function capitalize1(str) {
@@ -107,6 +113,7 @@ function capitalize2(str) {
 //console.log(capitalize2('abc abc abc'));
 
 /**
+6
 chunk
 */
 function chunk(array, size) {
@@ -121,6 +128,7 @@ function chunk(array, size) {
 //console.log(chunk([1,2,3,4],2));
 
 /**
+7
 fizzbuzz
 */
 function fizzBuzz(n) {
@@ -138,6 +146,7 @@ function fizzBuzz(n) {
 }
 
 /**
+8
 reverseint
 */
 function reverseInt(n) {
@@ -146,6 +155,7 @@ function reverseInt(n) {
 }
 
 /**
+9
 reversestring
 */
 function reverse1(str) {
@@ -165,6 +175,7 @@ function reverse3(str) {
 }
 
 /**
+10
 matrix
 */
 function matrix(n) {
@@ -208,7 +219,10 @@ function matrix(n) {
 
 console.log(matrix(3));
 
-//maxchar
+/**
+11
+maxchar
+*/
 function maxChar(str) {
 	const charMap = {};
 	let max = 0;
@@ -229,9 +243,12 @@ function maxChar(str) {
 	}
 	return maxChar;
 }
-console.log(maxChar("cabcaabc"));
+//console.log(maxChar("cabcaabc"));
 
-//pyramid
+/**
+12
+pyramid
+*/
 function pyramid(n) {
 	const midpoint = Math.floor((2*n-1)/2);
 	for(let row=0; row<n; row++) {
@@ -247,9 +264,10 @@ function pyramid(n) {
 	}
 }
 
-pyramid(3);
+//pyramid(3);
 
 /**
+13
 steps
 */
 function steps(n) {
@@ -267,6 +285,7 @@ function steps(n) {
 }
 
 /**
+14
 fib
 */
 function memorize(fn) {
@@ -301,6 +320,7 @@ function fib2(n) {
 }
 
 /**
+1
 LinkedList
 */
 class LinkedListNode {
@@ -332,6 +352,21 @@ class LinkedList {
 		}
 
 		return counter;
+	}
+
+	getFirst() {
+		return this.head;
+	}
+
+	insertFirst(data) {
+		this.head = new Node(data, this.getFirst());
+	}
+
+	removeFirst() {
+		if(!this.head) {
+			return;
+		}
+		this.head = this.head.next;
 	}
 
 	getAt(index) {
@@ -374,30 +409,6 @@ class LinkedList {
 		previous.next = new Node(data, node); //insert at the next of the head as the end of the list
 	}
 
-	removeFirst() {
-		if(!this.head) {
-			return;
-		}
-		this.head = this.head.next;
-	}
-
-	removeLast() {
-		if(!this.head) {//empty
-			return;
-		}
-		if(!this.head.next){//only head
-			this.head = null;
-			return;
-		}
-		let pre = this.head; 
-		let curr = this.head.next; // head, curr
-		while(curr.next){ //head, curr, curr.next
-			pre = curr;
-			curr = curr.next;
-		}
-		pre.next = null; //head, curr=null
-	}
-
 	removeAt(index) {
 		if(!this.head) {
 			return;
@@ -417,13 +428,7 @@ class LinkedList {
 		}
 	}
 
-	getFirst() {
-		return this.head;
-	}
-
-	insertFirst(data) {
-		this.head = new Node(data, this.getFirst());
-	}
+	
 
 	getLast() {
 		if(!this.head) {
@@ -447,6 +452,23 @@ class LinkedList {
 		}
 	}
 
+	removeLast() {
+		if(!this.head) {//empty
+			return;
+		}
+		if(!this.head.next){//only head
+			this.head = null;
+			return;
+		}
+		let pre = this.head; 
+		let curr = this.head.next; // head, curr
+		while(curr.next){ //head, curr, curr.next
+			pre = curr;
+			curr = curr.next;
+		}
+		pre.next = null; //head, curr=null
+	}
+
 	forEach(fn) {
 		if(!this.head) {
 			return null;
@@ -461,6 +483,7 @@ class LinkedList {
 }
 
 /**
+2
 midpoint
 */
 function midpoint(list) {
@@ -474,6 +497,7 @@ function midpoint(list) {
 }
 
 /**
+3
 circular
 */
 function circular(list) {
@@ -492,6 +516,7 @@ function circular(list) {
 }
 
 /**
+4
 fromlast
 */
 function fromLast(list, n) {
@@ -510,6 +535,7 @@ function fromLast(list, n) {
 
 
 /**
+5
 bst
 */
 class BSTNode {
@@ -545,6 +571,7 @@ class BSTNode {
 }
 
 /**
+6
 validate bst
 */
 function validateBST(node, min=null, max=null) {
@@ -564,6 +591,7 @@ function validateBST(node, min=null, max=null) {
 }
 
 /**
+7
 levelwidth
 */
 class TreeNode {
@@ -625,6 +653,7 @@ class Tree {
 
 
 /**
+8
 stack
 */
 class Stack{
@@ -646,6 +675,7 @@ class Stack{
 }
 
 /**
+9
 qfroms
 */
 
@@ -684,6 +714,7 @@ class QueueFromStack{
 }
 
 /**
+10
 queue
 */
 class Queue {
@@ -699,6 +730,8 @@ class Queue {
 }
 
 /**
+11
+weav
 */
 function weave(sourceOne, sourceTwo) {
 	const q = new Queue();
@@ -715,6 +748,7 @@ function weave(sourceOne, sourceTwo) {
 
 
 /**
+1
 sorting
 */
 function bubbleSort(arr) {
@@ -771,6 +805,7 @@ function merge(left, right) {
 }
 
 /**
+2
 events
 */
 class Events {
