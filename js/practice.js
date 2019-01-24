@@ -317,11 +317,8 @@ class LinkedListNode {
 }
 
 class LinkedList {
-	constructor(values = []) {
+	constructor() {
 		this.head = null;
-		for(let v of values) {
-			this.insertLast(v);
-		}
 	}
 
 	clear() {
