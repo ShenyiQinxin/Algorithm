@@ -25,3 +25,5 @@ hs_err_pid*
 #
 test-coderunner/
 
+*.class
+
