@@ -1,11 +1,3 @@
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-}
 
 /**
  * Input: 1->2->3->4->5->NULL
