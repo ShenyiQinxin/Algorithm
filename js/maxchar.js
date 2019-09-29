@@ -7,21 +7,23 @@
 
 function maxChar(str) {
   const charMap = {};
-  let count = 0;
+  let max = 0;
   let maxChar = "";
-
-  //for o
-  for (const char of str) {
-    charMap[char] = charMap[char] + 1 || 1;
+  for (let char of str) {
+    if (charMap[char]) {
+      charMap[char]++;
+    } else {
+      charMap[char] = 1;
+    }
   }
-  for (const char in charMap) {
-    if (charMap[char] > count) {
-      count = charMap[char];
+  for (let char in charMap) {
+    if (charMap[char] > max) {
+      max = charMap[char];
       maxChar = char;
     }
   }
   return maxChar;
 }
 
-console.log(maxChar("abcccccccd"));
+console.log(maxChar("abvvvvd"));
 module.exports = maxChar;

@@ -21,14 +21,12 @@ function capitalize(str) {
 
 module.exports = capitalize;
 
-// function capitalize(str) {
-//   let result = [];
-
-//   //str.split(' ') is an array
-//   for (let word of str.split(" ")) {
-//     result.push(word[0].toUpperCase() + word.slice(1));
-//   }
-//   return result.join(" ");
-//}
+function capitalize(str) {
+  const words = [];
+  for (let word of str.split(" ")) {
+    words.push(word[0].toUpperCase() + word.slice(1));
+  }
+  return words.join(" ");
+}
 
 console.log(capitalize("look, it is working!"));

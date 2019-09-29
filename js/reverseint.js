@@ -17,6 +17,6 @@ function reverseInt(n) {
   return parseInt(rev) * Math.sign(n);
 }
 
-console.log(reverseInt(-51));
+console.log(reverseInt(51));
 
 module.exports = reverseInt;

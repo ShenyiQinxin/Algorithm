@@ -18,18 +18,27 @@
 // }
 
 function palindrome(str) {
-  return str.split("").every((char, i) => char === str[str.length - 1 - i]);
+  const arr = str.split("");
+  for (let i = 0; i < str.length; i++) {
+    if (arr[i] !== arr[str.length - i - 1]) {
+      return false;
+    }
+  }
+  return true;
 }
+
+// function palindrome(str) {
+//   return str.split("").every((char, i) => char === str[str.length - i - 1]);
+// }
 
 console.log(palindrome("abcba"));
 
 module.exports = palindrome;
 
 // function palindrome(str) {
-//   const reversed = str
-//     .split('')
+//   const rev = str
+//     .split("")
 //     .reverse()
-//     .join('');
-//
-//   return str === reversed;
+//     .join("");
+//   return rev === str;
 // }

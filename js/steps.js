@@ -17,29 +17,6 @@
 //       '### '
 //       '####'
 
-function steps(n, row = 0, stair = "") {
-  //base line, n=0
-  if (n === row) {
-    return;
-  }
-  //when a stair finished
-  if (n === stair.length) {
-    console.log(stair);
-    return steps(n, row + 1);
-  }
-
-  //   if (stair.length <= row) {
-  //     stair += "#";
-  //   } else {
-  //     stair += " ";
-  //   }
-
-  const add = stair.length <= row ? "#" : " ";
-  steps(n, row, stair + add);
-}
-
-module.exports = steps;
-
 // function steps(n) {
 //   for (let row = 0; row < n; row++) {
 //     let stair = "";
@@ -49,9 +26,24 @@ module.exports = steps;
 //       } else {
 //         stair += " ";
 //       }
-//     }
+//     }` `
 //     console.log(stair);
 //   }
 // }
 
+function steps(n, row = 0, stair = "") {
+  //base line
+  if (n === row) {
+    return;
+  }
+  //end of a row
+  if (stair.length === n) {
+    console.log(stair);
+    return steps(n, row + 1);
+  }
+
+  stair.length <= row ? (stair += "#") : (stair += " ");
+  steps(n, row, stair);
+}
 steps(7);
+module.exports = steps;

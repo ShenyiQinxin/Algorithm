@@ -21,10 +21,6 @@ function cleanString(str) {
     .join("");
 }
 
-console.log(anagrams("i there', 'Bye there"));
-
-module.exports = anagrams;
-
 // function anagrams(stringA, stringB) {
 //   const aCharMap = buildCharMap(stringA);
 //   const bCharMap = buildCharMap(stringB);
@@ -34,7 +30,9 @@ module.exports = anagrams;
 //   }
 
 //   for (let char in aCharMap) {
-//     return aCharMap[char] !== bCharMap[char];
+//     if (aCharMap[char] !== bCharMap[char]) {
+//       return false;
+//     }
 //   }
 
 //   return true;
@@ -47,3 +45,7 @@ module.exports = anagrams;
 //   }
 //   return charMap;
 // }
+
+console.log(anagrams("i there', 'Bye there"));
+
+module.exports = anagrams;
