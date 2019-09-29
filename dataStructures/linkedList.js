@@ -81,7 +81,23 @@ class LinkedList {
         return array;
     }
 
-
+    reverse() {
+        if (!this.head.next) {
+            return this.head;
+        }
+        let first = this.head;
+        this.tail = this.head;
+        let second = first.next;
+        while (second) {
+            const third = second.next;
+            second.next = first; //
+            first = second; //first = first.next
+            second = third;
+        }
+        this.head.next = null;
+        this.head = first;
+        return this.listToArray();
+    }
 
 }
 
@@ -92,6 +108,7 @@ console.log(myLinkedList.length);
 myLinkedList.addAt(9, 5);
 myLinkedList.remove(0);
 console.log(myLinkedList.listToArray());
+console.log(myLinkedList.reverse());
 
 class DoublyNode {
     constructor(value, next = null, prev = null) {
