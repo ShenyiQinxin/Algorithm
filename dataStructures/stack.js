@@ -17,13 +17,11 @@ class Stack {
 
     push(value) {
         const node = new Node(value);
-
         if (this.length === 0) {
             this.bottom = node;
             this.top = node;
         } else {
             const prevTop = this.top;
-
             this.top = node;
             this.top.next = prevTop;
         }
@@ -33,17 +31,17 @@ class Stack {
     }
 
     pop() {
-
-    }
-
-    listToArray() {
-        const array = [];
-        let node = this.head;
-        while (node != null) {
-            array.push(node.value);
-            node = node.next;
+        if (!this.top) {
+            return null;
         }
-        return array;
+        //
+        if (this.length === 1) {
+            this.bottom = null;
+        }
+        const holding = this.top;
+        this.top = this.top.next;
+        this.length--;
+        return holding;
     }
 }
 
@@ -51,5 +49,24 @@ let myStack = new Stack();
 myStack.push(0);
 myStack.push(1);
 myStack.push(2);
-console.log(myStack)
-console.log(myStack.listToArray());
+myStack.pop();
+console.log(myStack);
+
+class StackByArray {
+    constructor() {
+        this.array = [];
+    }
+    peek() {
+        return this.array[this.array.length - 1];
+    }
+
+    push(value) {
+        this.array.push(value);
+        return this;
+    }
+
+    pop() {
+        this.array.pop();
+        return this;
+    }
+}
