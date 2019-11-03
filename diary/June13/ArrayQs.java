@@ -77,16 +77,72 @@ public class ArrayQs {
         }
 
         for (int i = 0; i < nums.length; i++) {
-            System.out.println(nums[i]);
+            System.out.print(nums[i] + " ");
+        }
+    }
+
+    /**
+     * Input:
+     *
+     * nums1 = [1,2,3,0,0,0], m = 3
+     *
+     * nums2 = [2,5,6], n = 3
+     *
+     * Output: [1,2,2,3,5,6]
+     */
+    static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int merged = m + n - 1;
+        int first = m - 1;
+        int second = n - 1;
+        while (merged >= 0) {
+            if (nums1[first] > nums2[second]) {
+                nums1[merged--] = nums1[first--];
+            } else {
+                nums1[merged--] = nums2[second--];
+            }
+            if (first < 0) {
+                nums1[merged] = nums2[second--];
+                continue;
+            }
+            if (second < 0) {
+                break;
+            }
+        }
+        for (int i = 0; i < nums1.length; i++) {
+            System.out.print(nums1[i]);
+        }
+    }
+
+    /**
+     * input: [1,2,3,4,5,6,7] and k = 3
+     * 
+     * Output: [5,6,7,1,2,3,4]
+     */
+    static int[] reverse(int[] nums, int l, int r) {
+        while (l < r) {
+            int tmp = nums[r];
+            nums[r] = nums[l];
+            nums[l] = tmp;
+            l++;
+            r--;
+        }
+        return nums;
+    }
+
+    static void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k %= n;
+        reverse(nums, 0, n - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n - 1);
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i] + " ");
         }
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
-        for (int i = 0; i < nums.length; i++) {
-            System.out.println(moveZeroes(nums[i]));
-        }
-        // System.out.println(moveZeroes(nums));
+        int[] nums = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+        rotate(nums, 3);
     }
 
 }

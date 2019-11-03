@@ -2,6 +2,7 @@
 // 3*2! - 6
 // 2*1! - 2
 // 1*0! - 1
+// 5! = 5*4*3*2*1
 function factorialRecursive(number) {
     if (number === 2) {
         return 2;
@@ -36,7 +37,20 @@ function fibonacciRecursive(n) {
     return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
 
+function reverseStringRecursive(str) {
+    if (str === "") {
+        return "";
+    }
+    return reverseStringRecursive(str.substr(1)) + str.charAt(0);
+}
+
+function reverseString(str) {
+    return str.split("").reverse().join("");
+}
+
 console.log(factorialRecursive(5));
 console.log(factorialIterative(5));
 console.log(fibonacciIterative(7));
 console.log(fibonacciRecursive(7));
+console.log(reverseStringRecursive('yoyo mastery'));
+console.log(reverseString("yoyo mastery"));
