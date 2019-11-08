@@ -70,6 +70,32 @@ class BinarySearchTree {
             }
         }
     }
+
+    breadFirstSearch() {
+        let current = this.root;
+        let list = [];
+        let queue = [];
+        queue.push(current);
+        while (queue.length > 0) {
+            current = queue.shift();
+            list.push(current.value);
+            if (current.left) {
+                queue.push(current.left);
+            }
+            if (current.right) {
+                queue.push(current.right);
+            }
+        }
+        return list;
+    }
+
+    breadFirstSearchR(queue, list) {
+        if (!queue.length) {
+            return list;
+        }
+        const current = queue.shift();
+        list.push
+    }
 }
 
 function traverse(node) {
